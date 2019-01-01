@@ -1,1 +1,107 @@
-* kaggle-plasticc-astronomical-classification
+#+TITLE The Photometric LSST Astronomical Time-series Classification Challenge
+
+* Business understanding
+** Background
+** Business objectives and success criteria
+** Inventory of resources
+** Requirements, assumptions and constraints
+** Risks and contingencies
+** Terminology
+** Costs and benefits
+** Data mining goals and success criteria
+** Project plan
+** Initial assessent of tools and techniques
+
+* Data understanding
+** Initial data collection report 
+*** Background of data
+*** List of data sources with broad area of required data covered by each 
+*** For each data source, method of acquisition or extraction
+*** Problems encountered in data acquisition or extraction
+** Data description report
+*** Each data source described in detail
+*** List of tables (may be only one or other database objects)
+*** Description of each field including units, codes used, etc.
+** Data exploration report
+*** Background including broad goals of data exploration
+For each area of exploration undertaken: 
+- Expected regularities or patterns 
+- Methods of detection 
+- Regularities or pattern found, expected and unexpected
+- Any other surprises 
+- Conclusions for data transformation, data cleaning and any other pre-processing
+- Conclusions related to data mining goals or business objectives 
+- Summary of conclusions
+** Data quality report  
+*** Background including broad expectations about data quality
+For each dataset : 
+- Approach taken to assess data quality
+- Results of data assessment
+- Summary of data quality conclusions
+
+* Data preparation
+** Dataset description report
+*** Background including broad goals and plan for preprocessing
+*** Rationale for inclusion/exclusion of datasets 
+For each included dataset: 
+- Description of the preprocessing, including the actions that were necessary to address any data quality issues
+- Detailed description of the resultant dataset, table by table and field by field
+- Rationale for inclusion/exclusion of attributes
+- Discoveries made during preprocessing and anu implications for futher work
+- Summary and conclusions
+* Modeling 
+** Modeling asumption
+** Test design
+*** Background - outlines the modeling undertaken and its relation to the data minig goals
+For each modeling task: 
+- Broad description of the type of model and the training data to be used 
+- Explanation of how the model will be tested or assessed 
+- Description of any data required for testing 
+- Plan for production of test data if any
+- Description of any planned examination of models by domain or data experts
+- Summary of test plan
+
+** Model description 
+*** Overview of models produced 
+For each model:
+- Type of model and relation to data mining goals 
+- Parameter settings used to produce the model 
+- Detailed description of the model and any special features (see p. 66)
+- Conclusions regarding patterns in the data (if any);
+*** Summary of conclusions
+** Model assessment 
+*** Overview of assessments process and results including any deviations from the plan
+For each model:
+- Detailed assessment of model including measurements such as acuracy and interpretation of behavior 
+- Any comments on models by domain or data experts
+- Summary assessment of model 
+- Insights into why a certain modeling technique and certain parameter settings led to good/bad results
+- Summary assessment of complete model set
+
+* Evaluation 
+** Assessment of data mining results with respect to business success criteria
+- Review of Business Objectives and Business Success Criteria (which may have changed during and/or as a result of data mining) 
+- Review of Project Success; has the project achieved the original Business Objectives?
+- Are there new business objectives to be addresses later in the project or in new projects? 
+- Conclusions for future data mining projects
+** Review of process
+** List of possible actions
+* Deployment
+** Deployment plan 
+*** Summary of deployable results
+*** Description of deployment plan
+** Monitoring and maintenance plan
+*** Overview of results deployment and indication of which may require updating (and why)
+For each deployed result:
+- Description of how updating will be triggered 
+- Description of how updating will be performed 
+*** Summary of the results updating process
+** Final report 
+- Summary of Business Understanding: background, objectives and success criteria.
+- Summary of data mining process.
+- Summary of data mining results.
+- Summary of results evaluation.
+- Summary of deployment and maintenance plans.
+- Cost/benefit analysis.
+- Conclusions for the business.
+- Conclusions for future data mining.
