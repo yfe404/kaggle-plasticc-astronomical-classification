@@ -1,5 +1,12 @@
 #+TITLE The Photometric LSST Astronomical Time-series Classification Challenge
 
+* References 
+
+- https://arxiv.org/abs/1810.00001 
+- https://plasticcblog.wordpress.com/
+- https://github.com/LSSTDESC/plasticc-kit
+
+
 * Business understanding
 ** Background
 ** Business objectives and success criteria
@@ -105,3 +112,4 @@ For each deployed result:
 - Cost/benefit analysis.
 - Conclusions for the business.
 - Conclusions for future data mining.
+
