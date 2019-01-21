@@ -5,6 +5,7 @@
 - https://arxiv.org/abs/1810.00001 
 - https://plasticcblog.wordpress.com/
 - https://github.com/LSSTDESC/plasticc-kit
+- https://galactica.isima.fr/
 
 
 * Business understanding
