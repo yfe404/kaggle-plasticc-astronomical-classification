@@ -4,3 +4,18 @@
 Objectif: étude des données disponibles pour le Data Mining.
 #+END_QUOTE
 
+
+
+
+** Checklist avant de passer à l'étape suivante 
+
+- Toutes les sources de données sont-elles clairement identifiées et consultées ? 
+- Avez-vous connaissance de problèmes ou de restrictions ?
+- Avez-vous identifié des attributs-clés parmi les données disponibles ?
+- Ces attributs vous ont-ils aidé à formuler des hypothèses ?
+- Avez-vous noté la taille de toutes les sources de données ?
+- Etes-vous en mesure d’utiliser un sous-ensemble de données si nécessaire ?
+- Avez-vous calculé des statistiques de base pour chaque attribut intéressant ? En avez-vous tiré des informations intéressantes ?
+- Avez-vous utilisé des graphiques exploratoires pour clarifier les attributs-clés ? Cet approfondissement a-t-il entraîné une reformulation de certaines de vos hypothèses ?
+- Quels sont les problèmes de qualité des données de ce projet ? Avez-vous un plan pour résoudre ces problèmes ?
+- Les étapes de la préparation des données vous apparaissent-elles clairement ? Par exemple, savez-vous quels sont les attributs à filtrer ou à sélectionner, et les sources de données à fusionner ?
