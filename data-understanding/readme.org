@@ -67,3 +67,4 @@ Répondre aux questions suivantes. Notez vos constatations et remarques.
 - [ ] Avez-vous utilisé des graphiques exploratoires pour clarifier les attributs-clés ? Cet approfondissement a-t-il entraîné une reformulation de certaines de vos hypothèses ?
 - [ ] Quels sont les problèmes de qualité des données de ce projet ? Avez-vous un plan pour résoudre ces problèmes ?
 - [ ] Les étapes de la préparation des données vous apparaissent-elles clairement ? Par exemple, savez-vous quels sont les attributs à filtrer ou à sélectionner, et les sources de données à fusionner ?
+
