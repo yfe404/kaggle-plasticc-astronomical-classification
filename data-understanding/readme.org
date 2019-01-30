@@ -1,5 +1,8 @@
 * Compréhension des données 
 
+[[file:img/meme-data-understanding.jpg]]
+
+
 #+BEGIN_QUOTE
 Objectif: étude des données disponibles pour le Data Mining.
 #+END_QUOTE
