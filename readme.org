@@ -21,32 +21,7 @@
 ** Initial assessent of tools and techniques
 
 * Data understanding
-** Initial data collection report 
-*** Background of data
-*** List of data sources with broad area of required data covered by each 
-*** For each data source, method of acquisition or extraction
-*** Problems encountered in data acquisition or extraction
-** Data description report
-*** Each data source described in detail
-*** List of tables (may be only one or other database objects)
-*** Description of each field including units, codes used, etc.
-** Data exploration report
-*** Background including broad goals of data exploration
-For each area of exploration undertaken: 
-- Expected regularities or patterns 
-- Methods of detection 
-- Regularities or pattern found, expected and unexpected
-- Any other surprises 
-- Conclusions for data transformation, data cleaning and any other pre-processing
-- Conclusions related to data mining goals or business objectives 
-- Summary of conclusions
-** Data quality report  
-*** Background including broad expectations about data quality
-For each dataset : 
-- Approach taken to assess data quality
-- Results of data assessment
-- Summary of data quality conclusions
-
+https://github.com/yafeunteun/kaggle-plasticc-astronomical-classification/tree/master/data-understanding
 * Data preparation
 ** Dataset description report
 *** Background including broad goals and plan for preprocessing
