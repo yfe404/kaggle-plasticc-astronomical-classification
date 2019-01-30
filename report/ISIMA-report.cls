@@ -172,8 +172,8 @@ BoldItalicFont=Arial-BoldItalic
 	\noindent All rights reserved. \\
 	\vspace{10pt}
 	\@university\\ \@universitycity, \@universitystate \\
-	\vspace{5pt}
-	\@enterprise\\ \@enterprisecity, \@enterprisestate\\
+%	\vspace{5pt}
+%	\@enterprise\\ \@enterprisecity, \@enterprisestate\\
 	\vspace*{\fill} \newpage \rm
 }
 
@@ -183,7 +183,7 @@ BoldItalicFont=Arial-BoldItalic
 	\setlength{\headheight}{0pt} 
 	\setcounter{page}{3}
 	\thispagestyle{fancy}
-	\rhead{\@author}
+%	\rhead{\@author}
 	\begin{center}
 	\vspace*{1pt}
 	\Large \textcolor{ISIMA-Blue}{\textbf{\@title}} \normalsize\\
