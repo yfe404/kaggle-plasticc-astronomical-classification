@@ -4,7 +4,11 @@
 
 
 #+BEGIN_QUOTE
-Objectif: étude des données disponibles pour le Data Mining.
+Objectif: étude des données disponibles pour le Data Mining. Cette étape revêt une importance vitale, car elle permet d’éviter les problèmes inattendus au cours de la phase suivante, la préparation des données, phase généralement la plus longue d’un projet.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+Implique l’accès aux données et leur exploration. (Compte Kaggle recommandé + installation de Python ou R)
 #+END_QUOTE
 
 
