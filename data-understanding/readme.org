@@ -1,0 +1,6 @@
+* Compréhension des données 
+
+#+BEGIN_QUOTE
+Objectif: étude des données disponibles pour le Data Mining.
+#+END_QUOTE
+
