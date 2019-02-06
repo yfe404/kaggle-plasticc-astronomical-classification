@@ -8,6 +8,8 @@ name = "pypi"
 [packages]
 
 jupyter = "*"
+pandas = "*"
+matplotlib = "*"
 
 
 [dev-packages]
