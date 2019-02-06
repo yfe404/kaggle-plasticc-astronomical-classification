@@ -1,4 +1,15 @@
-#+TITLE The Photometric LSST Astronomical Time-series Classification Challenge
+* The Photometric LSST Astronomical Time-series Classification Challenge
+
+** Data 
+
+Pour obtenir les données vous devez posséder un compte sur [[https://kaggle.com][Kaggle]] et installer [[https://github.com/Kaggle/kaggle-api][l'outils en ligne de commande kaggle-api]].
+Ensuite, entrez la commande suivante dans votre terminal: 
+
+#+BEGIN_SRC sh
+kaggle competitions download -c PLAsTiCC-2018
+#+END_SRC
+
+
 
 * References 
 
