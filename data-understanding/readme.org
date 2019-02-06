@@ -12,8 +12,6 @@ Implique l’accès aux données et leur exploration. (Compte Kaggle recommand
 #+END_QUOTE
 
 
-
-
 Collecte des données -> étude des données disponibles pour le Data mining  
 Répondre aux questions suivantes. Notez vos constatations et remarques.
 
@@ -51,7 +49,6 @@ Répondre aux questions suivantes. Notez vos constatations et remarques.
 - [ ] Avez-vous vérifié la plausibilité des valeurs ? Relevez les conflits apparents (par exemple, des adolescents à revenus élevés).
 - [ ] Avez-vous envisagé d’exclure les données sans impact sur vos hypothèses ?
 - [ ] Les données sont-elles conservées dans des fichiers non hiérarchiques ? Si oui, les délimiteurs des différents fichiers sont-ils cohérents ? Chaque enregistrement contient-il le même nombre de champs ?
-
 
 
 
