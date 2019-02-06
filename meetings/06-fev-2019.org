@@ -1,0 +1,23 @@
+* Résumé réunion 06 Février 2019
+
+** Objectif: 
+- Compilation des notes prises par chacun sur la compréhension des données
+- Création de fils de discussion dans l'espace de travail collaboratif pour éclaircir certains points/poser des questions
+
+
+** Taches identifiées: 
+- @all participer aux forums (lien en bas de ce document)
+  - ajoutez vos hypothèses 
+  - ajoutez vos questions
+
+Prochaine séance: vérification de la checklist https://github.com/yafeunteun/kaggle-plasticc-astronomical-classification/tree/master/data-understanding#checklist-avant-de-passer-%C3%A0-l%C3%A9tape-suivante
+pour passer à l'étape (au sens CRISP-DM) suivante sur la préparation des données.
+
+
+** Conclusion
+Comme évoqué lors de la précedente réunion, la semaine qui suivra permetta d'approfondir l'étape de compréhension des données 
+notamment en tentant de répondre aux questions identifiées et hypothèses formulées lors de cette séance.
+
+Un espace de travail a été créé à cet effet: https://github.com/yafeunteun/kaggle-plasticc-astronomical-classification/issues
+
+
