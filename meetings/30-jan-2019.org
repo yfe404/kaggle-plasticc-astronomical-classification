@@ -1,0 +1,23 @@
+* Résumé réunion 01 Février 2019
+
+Objectif: 
+- Présentation/discussion sur la phase de compréhension des données.
+- Assignement des taches 
+- Discussion Outils et méthodes (Github, Kaggle et Overleaf)
+
+
+
+Durant cette séance nous avons discuté et initialisé la phase de compréhension de données de la méthode CRISP-DM.
+
+La séance a consisté à étudier le livrable attendu de cette phase ainsi que le pré requis pour passer à la phase suivante sur la préparation 
+des données.
+
+Nous avons également discuté et mis en place les espaces de travail collaboratifs.
+Notamment un dépôt sur GitHub pour héberger la documentation et le code liés au projet. 
+- https://github.com/yafeunteun/kaggle-plasticc-astronomical-classification
+
+
+La semaine qui suit sera dédiée à la compréhension des données fournies par l'organisation du challenge.
+A l'issue, deux cas seront possibles, soit nous déciderons d'approfondir l'étape, en effet la composante métier 
+(astronomie, physique) est importante il est donc nécessaire d'envisager de passer plus longtemps sur cette phase. 
+Sinon nous préparerons l'étape de préparation des données.
