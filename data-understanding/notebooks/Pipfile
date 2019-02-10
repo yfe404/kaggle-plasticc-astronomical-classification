@@ -12,6 +12,7 @@ pandas = "*"
 matplotlib = "*"
 scipy = "*"
 seaborn = "*"
+cesium = "*"
 
 
 [dev-packages]
