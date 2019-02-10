@@ -1,6 +1,0 @@
-* Résumé réunion 01 Février 2019
-
-Objectif: 
-- Présentation/discussion sur la phase de compréhension des données.
-- Assignement des taches 
-- Discussion Outils et méthodes (Github, Kaggle et Overleaf)
