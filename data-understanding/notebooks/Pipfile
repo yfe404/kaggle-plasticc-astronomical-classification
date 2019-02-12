@@ -13,6 +13,7 @@ matplotlib = "*"
 scipy = "*"
 seaborn = "*"
 cesium = "*"
+astropy = "*"
 
 
 [dev-packages]
