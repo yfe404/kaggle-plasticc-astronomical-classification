@@ -1,0 +1,30 @@
+* Notebooks for data understanding 
+
+Le tableau suivant constitue un index des différents notebooks créés pour l'exploration et la compréhension des données.
+
+
+| Titre                                  | Description                                                                    |
+|----------------------------------------+--------------------------------------------------------------------------------|
+| [[https://github.com/yafeunteun/kaggle-plasticc-astronomical-classification/tree/yfe-eda/data-understanding/notebooks/simple-dataviz][Simple dataviz of a sample time series]] | Load train set with Pandas and plot some attributes for a single chosen object |
+|                                        |                                                                                |
+
+
+Pour installer les dépendances du fichier Pipfile.lock: 
+
+#+BEGIN_SRC sh
+pipenv install
+#+END_SRC
+
+
+Pour installer de nouveaux paquets (attention, ne faire que si nécessaire et bien vérifier la source)
+
+#+BEGIN_SRC sh
+pipenv install <NOM DU PAQUET>
+#+END_SRC
+
+
+Démarrer Jupyter 
+
+#+BEGIN_SRC sh
+pipenv run jupyter notebook 
+#+END_SRC
