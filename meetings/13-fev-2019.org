@@ -1,0 +1,30 @@
+* Résumé réunion 13 Février 2019
+
+** Objectif: 
+- Compilation des notes prises par chacun sur la compréhension des données
+- Passer en revue les éléments de la checklist sur l'étape de compréhension des données avant passage à l'étape suivante.
+
+
+** Taches identifiées: 
+- @all participer aux forums 
+  - ajoutez vos hypothèses 
+  - ajoutez vos questions
+  - étudier la bibliothèque [[http://cesium-ml.org/docs/feature_table.html][Cesium]] pour la génération de features (ATTENTION travaillez sur votre branche git personnelle)
+  - étudier les processus gaussiens en particulier leur application en regression.
+    - http://katbailey.github.io/post/gaussian-processes-for-dummies/
+    - http://www.gaussianprocess.org/gpml/chapters/RW.pdf
+  - étudier la relation distmod-redshift et sa potentielle application sur la correction des données 
+
+
+** Prochaine séance: 
+
+- Présentations des avancées sur l'étape de préparation des données. 
+- Focus sur les points bloquants si besoin.
+- Présentation/Résumé sur les processus gaussiens 
+- Présentation/Résumé de l'étude sur la relation distmod-redshift (c.f. channel références sur Slack)
+
+
+** Conclusion
+Cette semaine nous a permis d'achever la première itération sur la phase de compréhension des données. 
+La checklist permettant de passer à l'étape de transformation des données a été validé par le groupe.
+Nous démarrons donc la phase suivante avec les idées claires sur la marche à adopter (voir [[https://github.com/yafeunteun/kaggle-plasticc-astronomical-classification/blob/master/data-understanding/notebooks/data-understanding-checklist.ipynb][checklist]])
