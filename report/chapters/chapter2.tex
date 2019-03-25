@@ -53,9 +53,18 @@ La classification basées sur les shapelets a trois avantages \citep{ye2009time}
 
 Pour pourvoir appliquer ce modèle il faut pourvoir extraire les shapelets et définir la notion de similarité entre un shapelet et une série temporelle.
 
-\subsubsection{Extraction des shapelets}
+Commençons par donner quelques définitions formelles:
+
+\textbf{Une série temporelle \textit{T}} est une ensemble ordonné de \textit{m} valeurs réelles. $ T = t_1, t_2,...,t_m $. \textit{m} est la taille de la séries.
+
+\textbf{Une sous-série \textit{S} de \textit{T}} est un sous ensemble ordonné de \textit{l} ($ l \leq m $) valeurs de \textit{T}. $ S = T_p, T_{p+1},..., T_{p+l-1}, pour 1 \leq p \leq m-l+1 $. Le nombre de sous-séries peut très rapidement exploser lorsque $l$ est négligeable devant $m$. En effet une série de taille $m$ a exactement $ m-l+1 $ sous-séries de taille $l$. Les données de test de PLASTICC forment un ensemble de $ 3492890 $ de taille $1094$ chacune après qu'on l'imputation des valeurs manquantes. Le nombre de sous-séries possible est donc de $ 3492890 \times (1094 - l + 1)$, un algorithme naif serait donc inutilisable en pratique.
+
+\textbf{Un Shapelet} est une sous-séries qui permet séparer l'ensemble des données en entrée en deux classes suffisamment hétérogène. 
 
 \subsubsection{Mesure de la similarité}
+
+\subsubsection{Extraction des shapelets}
+Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. 
 
 \section{Évaluation}
 \section{Déploiement}
