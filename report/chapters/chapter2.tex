@@ -32,6 +32,8 @@ La figure \ref{fig:modeling_shema} est une représentation schématique du proce
 \subsection{Modèles basés sur les caractéristiques}\label{sec:feature_based_model}
 
 \subsection{Modèles basés sur les shapelets}\label{sec:shapelet_based_model}
+Un Shapelet est défini comme une sous-séquence d'une série temporelle qui est représentative pour la classe \citep{ye2009time}. Ainsi une série temporelle appartient à une classe donnée si elle contient le \textit{shapelet} représentatif de ladite classe. Dans la pratique les séries d'une même classe n'ont pas exactement les mêmes sous-séquences représentatives mais elles ont des sous-séquences qui sont similaires aux sous-séquences représentatives de la classe. 
+La classification des séries temporelles peut être réalisée par un arbre de décision dans lequel l'attribut de division (split) à chaque noeud est un \textit{shapelet} et les données sont séparées en fonction de la similarité à ce \textit{shapelet}.
 
 \section{Évaluation}
 \section{Déploiement}
