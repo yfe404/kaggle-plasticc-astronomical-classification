@@ -2,16 +2,182 @@
 
 Méthode CRISP\cite{crisp}
 
-Evaluation de nos modèles \cite{plasticc_team_2019_2539456}
+Évaluation de nos modèles \cite{plasticc_team_2019_2539456}
 
 \section{Compréhension du problème}
+Le développement de la théorie de la relativité générale couplée à de nombreuses observations astrophysiques ont permis l'élaboration d'un modèle, décrivant l'histoire de l'Univers, son évolution, son expansion et sa composition énergétique.
+Les observations des galaxies et plus récemment, celles des supernovae, ont montré que notre univers est en expansion et même en expansion accélérée, ce qui ne peut se concevoir simplement compte-tenu de la force gravitationnelle qui tend à agglomérer la matière.
+Du fait de l'expansion de l'Univers, les objets lointains voient leurs spectres décalés vers le rouge.
+\newline La mesure de ce décalage (couramment nommé redshift) est une mesure indirecte de la distance à laquelle se trouve l'objet observé mais également une mesure du paramètre d'expansion, ce qui permet d'étudier les caractéristiques de l'énergie noire. Grâce à de nombreuses sondes observationnelles il est possible d'étudier l'évolution de l'Univers au cours du temps.
+Afin d'obtenir les observations nécessaires, de nombreux projets ont vu le jour. Parmi eux, le \textbf{Large Synoptic Survey Telescope (LSST)} qui est un télescope grand champ qui devrait permettre l'observation de milliards de galaxies.
+\subsection{Présentation du projet LSST (Large Synoptic Survey Telescope)} 
+Le projet LSST  est un projet international dont les objectifs de LSST balayent quatre thèmes de science à savoir :
+\begin{itemize}
+    \item  La recherche et la compréhension de la matière noire.
+    \item La recherche et la compréhension de l'énergie noire.
+    \item L'étude des objets transitoires.
+    \item  L'étude de la Voie Lactée et du système solaire.
+\end{itemize}
+Chacun de ces thèmes va imposer des contraintes sur l'instrument et sa capacité d'observation.
+Elles seront utilisées pour optimiser l'ensemble des paramètres caractéristiques du télescope.
+\subsubsection{Présentation du télescope LSST}
+\textbf{Le télescope LSST} est un télescope optique de grande taille en cours de construction au nord du Chili et caractérisé par un champ d’observation très large. Il observeras dans le domaine de l'optique, la totalité de l'hémisphère sud pendant plus de dix ans.
+Son optique compacte sera composée de trois miroirs et une caméra avec un diamètre de 64 cm, 189 CCDs et plus de 3 milliards de pixels, sera la plus importante jamais construite. Son champ de vue à la fois large et profond va permettre l'étude de nombreux sujets scientifiques, de l'exploration intensive du système solaire aux mesures de précision des paramètres cosmologiques. 
+Les mesures atmosphériques réalisées depuis 10 ans sur le site (depuis le Cerro Tololo Inter-American Observatory CTIO) montrent que plus de 80\% des nuits sont propices à l'observation avec d'excellentes conditions atmosphériques.
+\newline En plus des excellentes conditions d'observation, LSST bénéficiera d'une infrastructure (conditions d'accès ...) facilitée par la présence de télescopes d'envergure déjà en fonctionnement sur ce site. 
+\newline
+\begin{figure}
+    \centering
+    \includegraphics[height=150,width=350]{report/figures/LSST.jpg}
+    \caption{Telescope LST}
+    \label{fig:my_label}
+\end{figure}
+\newline la construction du télescope prend en compte les paramètres définis sur le tableau ci-dessous.
+\newline
+\newline
+\begin{tabular}{|c|c|}
+      \hline
+     Paramètres & Valeurs \\
+     \hline
+     Site & Cerro Pachón Chili 1ère  \\
+     \hline
+     1ère lumière & 2020 \\
+     \hline
+     Durée de vie nominale & 10 ans  \\
+     \hline
+     Type de télescope & Paul Baker - Mersenne Schmidt grand champ  \\
+     \hline
+     Taille du sondage & 20 000 deg2  \\
+     \hline
+     Champ de vue & 9.62 deg2 \\
+    
+     \hline
+     Longueur focale & 	10.2 m Diamètre  \\
+     \hline
+     Diamètre effectif & 6.5 m\\
+     \hline
+      Étendue & 319 m2/deg2 \\
+     \hline
+     Résolution angulaire & 0.2 seconde d'arc / pixel  \\
+     \hline
+     Nombre de filtres & 6 (ugrizy)  \\
+     \hline
+     Spectre photométrique & 310 à 1060 nm  \\
+     \hline
+     Durée d'exposition (tvis) & 30 s (2×15 s) \\
+     \hline
+     Nombre de jours entre chaque visite & 3 à 4   \\
+     \hline
+     Proportion du temps pour & le programme principal 	90\% \\
+     \hline
+     Proportion du temps pour & les programmes spécifiques	10\%  \\
+     
+     \hline
+\end{tabular}
+\newline
+\subsubsection{La stratégie d'observation du télescope LSST}
+Le principe fondamental de LSST est de balayer l'ensemble du ciel observable depuis le Chili avec un champ profond, large, et de manière rapide, avec une stratégie d'observation spécifique. Cette dernière est déterminée de façon à maximiser la qualité des observations scientifiques tout en minimisant les temps morts, avec une sélection appropriée du filtre en temps réel, et en fonction des conditions météorologiques. Bien que la stratégie d'observation ne soit pas encore complètement déterminée à ce jour, environ 90\% du temps devrait être consacré au sondage principal. Celui-ci, dit (Universal cadence), devrait conduire à la réalisation d’une base de données répondant à la plupart des objectifs de science.  Les 10\% restants seront consacrés à la réalisation de champs plus profonds, avec des temps entre deux visites très courts (∼ 1 minute), et à l'observation de régions particulières, tel que le plan de l'écliptique, le plan galactique ou les nuages de Magellan.
+La cadence d'observation principale va générer un flux continu de données brutes avec une production d'environ 15 terabyte (TB) par nuit. On estime qu'après 10 ans de fonctionnement, 11 Data Release seront produites à partir d'un ensemble de données approchant 500 Pentabyte(PB) pour l'imagerie d'images et environs environ 50 PB pour les catalogues.
+\subsubsection{Gestion de données collectées}
+L'importance des volumes de données produites, l'aspect temporel des phénomènes observés et la complexité des processus traités imposent un traitement en temps réel et automatisé des données. Ainsi les données collectées par LSST seront automatiquement réduites en images et en catalogues par le système. Les données seront traitées en suivant trois niveaux :
 
-Dans cette section nous .....
-Nous passerons en revue les objectifs de ce projets en termes .... et ....
-Enfin nous proposerons un plan de projet.
+\begin{itemize}
+    \item Traitement en temps réel: archivage des images brutes générées pendant la nuit d'observation et émission des alertes (détections de nouvelles source, ou sources dont les propriétés ont changées depuis la dernière observation) dans les 60 secondes qui suivent la détection.
+    \item Une fois par an, les données seront retraitées afin de fournir un catalogue et des images parfaitement calibrées (une calibration photométrique et astrométrique uniforme sur le catalogue sera fournie).
+    \item Les produits de données de niveau 3 sont issu d'une combinaison des niveaux 1 et 2 afin de répondre à certaine problématiques scientifiques particulières. Le système de gestion des données (Data Management System DMS) va faciliter cette étape du traitement des données en créant des logiciels et des interfaces (API pour Application Programming Interfaces) permettant le développement des logiciels d'analyse.
+\end{itemize}
+L’une des principales difficultés que rencontreront les scientifiques est l’exploitation des données qui seront issues des observations.
+Pour pallier à ces difficultés les concepteurs du projet LSST ont lancés le projet PLAsTiCC  Photometric LSST Astronomical Time-Series Classification Challenge) dont le but est de concevoir un modèle permettant de classer les objets observés par le télescope LSST.
+\subsubsection{PLAsTiCC  (Photometric LSST Astronomical Time-Series Classification Challenge)}
+Afin de faciliter l’exploitation de données collectées, LSST demande à Kaggle de l’aider à se préparer à la classification des données des nouvelles observations à travers une compétition. 
+Le but de cette compétition est d’amener les concurrents  à construire un modèle de  classification qui permettra de classer  les sources  des objets astronomiques observés. 
+Le modèle à construire doit tenir compte du fait que les données qui seront issues des observations forment une série temporelle.
+Les organisateurs du challenge ont mis à la disposition des compétiteurs un jeux de données à partir duquel ils doivent construire le modèle.
+Le jeux de données mis à notre disposition fera l’objet d’une étude détaillé dans la section qui suit.
 
 
 \section{Compréhension des données}
+La compréhension des données est l’une des étapes les plus importantes pour la réalisation d’un projet data mining elle vise à déterminer précisément les données à analyser, à identifier la qualité des données disponibles et à faire le lien entre les données et leur signification d’un point de vue métier. La Data Science étant basée sur les données seules, les problèmes métiers relatifs à des données existantes, qu’elles soient internes ou externes, peuvent ainsi être résolus par la Data Science.
+Les données sont mises à disposition sur kaggle plasticc challeng.
+
+\subsection{présentation des données}
+Pour la réalisation du projet  l’équipe plasticc-challeng à mit à notre disposition deux table de données qui sont partagées  en données de Test et données d'entraînements:
+ \newline
+ \newline
+ \textbf {[training/test]-set-metadata:} Informations sur les objets qui ne changent pas dans le temps, comme les coordonnées de l'objet, voici les attributs de cette table.
+
+\begin{itemize}
+    \item \textbf {object-id:} identifiant d'objet unique de type Integer.
+    \item \textbf {ra:} désigne l’ascension droite d’un objet, qui est une coordonnée ciel: co-longitude en degrés de type Float qui est calculé à partir de la différence de la latitude et 90°. 
+    \item \textbf {decl} la déclinaison d’un objet dans le ciel ou co-latitude en degrés de type Float. 
+    \item \textbf {gal-l:} désigne la longitude galactique en degrés de type Float. 
+    \item \textbf {gal-b:} désigne la latitude galactique d'un objet en degrés de type Float.
+    \item \textbf {ddf:} Un drapeau pour identifier l’objet comme provenant de la zone de levé DDF (avec la valeur DDF = 1 pour le DDF, DDF = 0 pour le levé WFD). si les champs DDF sont contenus dans la totalité de la zone d’enquête de la DCE, les incertitudes des flux DDF sont bien moindres de type Booléen.
+    \item \textbf {hostgal-specz:} le redshift spectroscopique de la source (décalage vers le rouge). Il s'agit d'une mesure extrêmement précise du décalage vers le rouge, disponible pour l'ensemble d'entraînement et une petite fraction de l'ensemble d'essai de type Float, les objet qui sont de redshift=0 sont galactiques.
+    \item \textbf {hostgal-photoz:} Redshift photométrique de la galaxie hôte de la source astronomique. Bien que cela soit censé être un proxy pour hostgal-specz, il peut exister de grandes différences entre les deux et doit être considéré comme une version beaucoup moins précise de hostgal-specz cet attribut est de type Float.
+    \item \textbf {hostgal-photoz-err:}  L'incertitude sur hostgal-photoz d'après les projections de l'enquête LSST cet attribut est de type Float.  
+    \item \textbf { distmod:} La distance à la source calculée à partir de hostgal-photoz et en utilisant la relativité générale qui est une théorie relativiste de la gravitation, c'est-à-dire qu'elle décrit l'influence sur le mouvement des astres de la présence de matière et, plus généralement d'énergie, en tenant compte des principes de la relativité restreinte, cet attribut est de type Float.
+   
+    \item \textbf {mwebv:} MW E (BV). cette «extinction» de la lumière est une propriété de la poussière de la voie lactée (MW) le long de la ligne de mire de la source astronomique et est donc fonction des coordonnées du ciel de la source ra, décl. Ceci est utilisé pour déterminer une gradation et un redimensionnement de la lumière provenant de sources astronomiques dépendant de la bande passante, de type FLOAT.
+    
+    \item \textbf {target:} c'est La classe de la source astronomique. Ceci est fourni dans les données de formation. le but du défi est de déterminer correctement la cible (attribuer correctement les probabilités de classification aux objets). Il existe une classe dans l'ensemble de test qui ne se produit pas dans l'ensemble d'apprentissage: class-99 sert de classe "autre" pour les objets n'appartenant à aucune des 14 classes de l'ensemble d'apprentissage. Int8
+    \newline
+    \textbf{[training/test]-set:} Série chronologique d'observations des objets. Mappe aux métadonnées via object-id.
+ 
+    \item \textbf{object-id:}  Clé étrangère avec les métadonnées de type Int32
+    \item \textbf{mjd:} l'heure en date julienne modifiée (MJD) de l'observation. Peut être lu comme des jours depuis le 17 novembre 1858. Peut être converti au temps de l'époque Unix avec la formule unix-time = (MJD−40587)×86400. Float64 
+    \item \textbf{ passband:}  Le nombre entier spécifique à la bande passante LSST, tel que u, g, r, i, z, Y = 0, 1, 2, 3, 4, 5 dans lequel il a été visualisé. Int8
+    \item \textbf{flux:}  le flux mesuré (luminosité) dans la bande passante d'observation, indiqué dans la colonne de la bande passante. Ces valeurs ont déjà été corrigées pour tenir compte de l'extinction des poussières (mwebv), bien que les objets fortement éteints aient de plus grandes incertitudes ( flux-err) malgré la correction. Float32 
+    \item \textbf{ flux-err:} l'incertitude sur la mesure du flux listée ci-dessus. Float32  
+    \item\textbf{detected:} Si 1, la luminosité de l'objet est significativement différente au niveau 3-sigma par rapport au modèle de référence. Seuls les objets avec au moins 2 détections sont inclus dans le jeu de données de type Booléen
+\end{itemize}
+
+\subsection{Les attributs de la base de données les plus prometteurs}
+L’une des questions les plus importantes est quels sont les attributs les plus pertinants qui nous permettent de faire une meilleure classification. 
+tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99 ”  sert de classe "autre" pour les objets n'appartenant à aucune des 14 classes de l'ensemble d'apprentissage.
+\newline
+\newline
+Autres attributs très importants sont les attributs qui permettent de positionner un objet dans le ciel comme:
+\begin{itemize}
+    \item Les coordonnées de l'objet: \textbf{ra ,decl, gal-l, gal-b}.
+    \item Les attributs qui nous permettent de dire si un objet est galactique ou extragalactique:  \textbf{hostgal-photoz, hostgal-photoz}, un objet est galactique si le redshift=0, extragalactique sinon.
+    \item L'attribut \textbf{distmod} qui nous donne la distance entre l'objet céleste et le point d'observation.
+\newline
+\newline
+D'autres attributs nous permettent de mesurer la luminosité de chaque objet lors des observation selon plusieurs filtres:
+    \item passband, flux, flux-erreur.
+\newline
+L'observation est faites sur des séries temporelles,  la luminosité et la position d'un objets varie selon le temps, l'attribut utilisé ici est le \textbf{mjd}, qui est l'heure en date julienne modifiée.
+\end{itemize}
+
+\begin{comment}
+    \begin{figure}
+    \centering
+    \includegraphics[height=250,width=450]{report/figures/galactic.jpg}
+    \caption{objets galactiques est extragalactiques dans chaque classe}
+    \label{fig:my_label}
+\end{figure}
+\end{comment}
+
+\subsection{Les attributs qui semblent sans intérêt et peuvent être exclus}
+certain attributs peuvent êtres exclus pour la modélisations car ils peuvent nous fausser les résultats, comme les attributs identifiant, ou les attributs aui nous permettent pas de faire une bonne classification, dans notre cas la plupart des attributs sont important, mais on peut mettre en vue certain autres comme:
+\begin{itemize}
+    \item \textbf {id-object : } qui est l'identifiant d'un objet dans une classe et qui sert de clés entre les deux table data et meta-data.
+    \item \textbf {detected : } de type booléen, Seuls les objets avec au moins 2 détections sont inclus dans le jeu de données 
+\end{itemize}
+    
+\subsection{Les attributs corrélés}
+\begin{comment}
+    \begin{figure}
+        \centering
+        \includegraphics[height=250,width=450]{report/figures/correlation.jpg}
+        \caption{table de corrélations des objets}
+        \label{fig:my_label}
+        \centering
+    \end{figure}
+\end{comment}
+
+\subsection{Les attributs a valeurs manquantes}
 \section{Préparation des données}
 \section{Modélisation}
 \section{Évaluation}
