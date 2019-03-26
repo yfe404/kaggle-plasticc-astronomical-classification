@@ -59,12 +59,20 @@ Commençons par donner quelques définitions formelles:
 
 \textbf{Une sous-série \textit{S} de \textit{T}} est un sous ensemble ordonné de \textit{l} ($ l \leq m $) valeurs de \textit{T}. $ S = T_p, T_{p+1},..., T_{p+l-1}, pour 1 \leq p \leq m-l+1 $. Le nombre de sous-séries peut très rapidement exploser lorsque $l$ est négligeable devant $m$. En effet une série de taille $m$ a exactement $ m-l+1 $ sous-séries de taille $l$. Les données de test de PLASTICC forment un ensemble de $ 3492890 $ de taille $1094$ chacune après qu'on l'imputation des valeurs manquantes. Le nombre de sous-séries possible est donc de $ 3492890 \times (1094 - l + 1)$, un algorithme naif serait donc inutilisable en pratique.
 
-\textbf{Un Shapelet} est une sous-séries qui permet séparer l'ensemble des données en entrée en deux classes suffisamment hétérogène. 
+    \textbf{Un Shapelet} est une sous-séries qui permet de séparer l'ensemble des séries temporelles en deux classes suffisamment hétérogènes pour que l'une des classes contienne des séries qui ont une sous-séquence similaire au shapelet tandis que l'autre classe contient des séries qui n'ont pas de sous-séquence similaire au shapelet\cite{fotso2018frobenius}. 
 
 \subsubsection{Mesure de la similarité}
+Il existe dans la littérature plusieurs métriques pour mesurer la similarité entre deux séries temporelles de même taille. Nous avons par exemple la distance euclidienne, DTW (Dynamic Time Warping), DUST, PROUD, MUNICH et FOTS \cite{fotso2018frobenius}. Les séries temporelles de PLASTICC étant incertaines, FOTS serait la métrique la plus adaptée car elle est plus robuste à l'incertitude. Cependant, étant contraint par le temps, nous avons utilisé DTW car tslean l'implémente déjà et le calcul des valeurs propres dont a besoin FOTS sur un dataset aussi grand que celui de PLASTICC prendrait beaucoup trop de temps.
+
+La similarité entre une séries $ T $ et une sous-séries $ S $ de taille inférieure ou égales est définie comme la similarité entre $ S $ et la sous-séries de $ T $ de même taille de de $ S $ et la plus similaire à $ S $. 
+$$
+Sim(S, T) = min \left \{ Sim(S, S'), |S|=|S'| \:  \forall S'\: sous \: séries \: de \: T \right \}
+$$
+
+Dans la formule précédente $ Sim $ peut être n'importe qu'elle mesure de similarité entre deux séries temporelles. 
 
 \subsubsection{Extraction des shapelets}
-Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. La figure \ref{fig:shapelet_example} donne quelques shapelets que nous avons appris sur plasticc. Les couleurs correspondent aux filtres.
+Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. La figure \ref{fig:shapelet_example} donne quelques shapelets que nous avons appris sur plasticc. Les couleurs correspondent aux différents filtres.
 
 \begin{figure}[!h]
     \centering
@@ -76,4 +84,5 @@ Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{ts
 \end{figure}
 
 \section{Évaluation}
+
 \section{Déploiement}
