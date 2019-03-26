@@ -73,6 +73,29 @@ Proportion du temps pour le programme principal & 90\% \\
 Proportion du temps pour les programmes spécifiques & 10\% \\
 \hline
 \end{tabular}
+\newline
+\newline
+
+\textbf{La camera de LSST}: Placée au centre du miroir M2, la caméra de LSST sera la plus grande caméra CCD jamais réalisée, avec un diamètre de 1.6 m, une longueur de 3 m pour un poids de 2 800 kg. En complément du plan focal de capteurs CCD, elle sera composée du correcteur de champ, d'un carrousel de 5 filtres.
+\newline
+\textbf{Les filtres }: Les cinq premiers des six filtres de LSST sont modélisés à partir de ceux de SDSS. La bande passante de LSST a été complétée aux grandes longueurs d'onde par l'ajout du filtre y, centré sur 1018 nm. La transmission de ces six filtres, est représentée sur la figure ci-dessous, sur laquelle nous avons également tracée la transmission de l'optique (miroirs et lentilles, en orange) ainsi que l'efficacité quantique des CCDs (en violet). Les transmissions finales des filtres tiennent compte de ces deux quantités. L'ajout du filtre supplémentaire y est motivé par la gamme de redshift accessible à LSST (les objets les plus lointains sont vus avec un spectre fortement rougi, ce qui nécessite l'utilisation d'un filtre supplémentaire) et rendu possible grâce à la grande sensibilité des capteurs CCD
+\newline
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=12cm,height=7cm]{report/figures/filtre1.JPG}
+    \caption{Transmission des six filtre du LSST en fonction de la longueur d'onde.}
+    \label{fig:modeling_shema}
+\end{figure}
+\newline
+Les caractéristiques de la bande passante de chacun des filtres sont résumées ci dessous.
+\begin{figure}[!h]
+    \centering
+    \includegraphics{report/figures/filtre2.JPG}
+    \caption{Transmission des six filtre du LSST en fonction de la longueur d'onde.}
+    \label{fig:modeling_shema}
+\end{figure}
+
+
 \subsubsection{La stratégie d'observation du télescope LSST}
 Le principe fondamental de LSST est de balayer l'ensemble du ciel observable depuis le Chili avec un champ profond, large, et de manière rapide, avec une stratégie d'observation spécifique. Cette dernière est déterminée de façon à maximiser la qualité des observations scientifiques tout en minimisant les temps morts, avec une sélection appropriée du filtre en temps réel, et en fonction des conditions météorologiques. Bien que la stratégie d'observation ne soit pas encore complètement déterminée à ce jour, environ 90\% du temps devrait être consacré au sondage principal. Celui-ci, dit (Universal cadence), devrait conduire à la réalisation d’une base de données répondant à la plupart des objectifs de science.  Les 10\% restants seront consacrés à la réalisation de champs plus profonds, avec des temps entre deux visites très courts (∼ 1 minute), et à l'observation de régions particulières, tel que le plan de l'écliptique, le plan galactique ou les nuages de Magellan.
 La cadence d'observation principale va générer un flux continu de données brutes avec une production d'environ 15 terabyte (TB) par nuit. On estime qu'après 10 ans de fonctionnement, 11 Data Release seront produites à partir d'un ensemble de données approchant 500 Pentabyte(PB) pour l'imagerie d'images et environs environ 50 PB pour les catalogues.
@@ -95,16 +118,17 @@ Les organisateurs du challenge ont mis à la disposition des compétiteurs un je
 Le jeux de données mis à notre disposition fera l’objet d’une étude détaillé dans la section qui suit.
 
 
+
 \section{Compréhension des données}
 La compréhension des données est l’une des étapes les plus importantes pour la réalisation d’un projet data mining elle vise à déterminer précisément les données à analyser, à identifier la qualité des données disponibles et à faire le lien entre les données
 et leur signification d’un point de vue métier. La Data Science étant basée sur les données seules, les problèmes métiers relatifs à des données existantes, qu’elles soient internes ou externes, peuvent ainsi être résolus par la Data Science. Les données sont mises à
 disposition sur kaggle-plasticc-challenge.
 
 \subsection{présentation des données}
-Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre disposition deux table de données qui sont partagées en données de Test et données d’entraînements .
+Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre disposition deux tables de données qui sont partagées en données de Test et données d’entraînements .
 \newline
 \newline
-\textbf{[training/test]-set-metadata :} Informations sur les objets qui ne changent pas dans le temps, comme les coordonnées de l’objet, voici les attributs de cette table.
+\textbf{1. [training/test]-set-metadata :} Informations sur les objets qui ne changent pas dans le temps, comme les coordonnées de l’objet, voici les attributs de cette table.
 \begin{itemize}
     \item \textbf{object-id :} identifiant d’objet unique de type Integer.
     \item \textbf{ra :} désigne l’ascension droite d’un objet, qui est une coordonnée ciel : co-longitude en degrés de type Float qui est calculé à partir de la différence de la latitude et 90°.
@@ -112,16 +136,15 @@ Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre di
     \item \textbf{ gal-l :} désigne la longitude galactique en degrés de type Float.
     \item \textbf{gal-b : }désigne la latitude galactique d’un objet en degrés de type Float.
     \item \textbf{ ddf :} Un drapeau pour identifier l’objet comme provenant de la zone de levé DDF (avec la valeur DDF = 1 pour le DDF, DDF = 0pour le levé WFD). si les champs DDF sont contenus dans la totalité de la zone d’enquête de la DCE, les incertitudes des flux DDF sont bien moindres de type Booléen.
-    \item \textbf{ hostgal-specz : }le redshift spectroscopique de la source (décalage vers le rouge). Il s’agit d’une mesure extrêmement précise du décalage vers le rouge, disponible pour l’ensemble d’entraînement et une petite fraction de l’ensemble d’essai de type Float, les objet qui sont de redshift=ൡ sont galactiques.
+    \item \textbf{ hostgal-specz : }le redshift spectroscopique de la source (décalage vers le rouge). Il s’agit d’une mesure extrêmement précise du décalage vers le rouge, disponible pour l’ensemble d’entraînement et une petite fraction de l’ensemble d’essai de type Float, les objet qui sont de redshift=0 sont galactiques.
     \item \textbf{hostgal-photoz :} Redshift photométrique de la galaxie hôte de la source astronomique. Bien que cela soit censé être un proxy pour hostgal-specz, il peut exister de grandes différences entre les deux et doit être considéré comme une version beaucoup moins précise de hostgal-specz cet attribut est de type Float.
     \item \textbf{hostgal-photoz-err :} L’incertitude sur hostgal-photoz d’après les projections de l’enquête LSST cet attribut est de type Float.
     \item \textbf{distmod :} La distance à la source calculée à partir de hostgal-photoz et en utilisant la relativité générale qui est une théorie relativiste de la gravitation, c’est-à-dire qu’elle décrit l’influence sur le mouvement des astres de la présence de matière et, plus généralement d’énergie, en tenant compte des principes de la relativité restreinte, cet attribut est de type Float.
     \item\textbf{mwebv :} MW E (BV). cette «extinction» de la lumière est une propriété de la poussière de la voie lactée (MW) le long de la ligne de mire de la source astronomique et est donc fonction des coordonnées du ciel de la source ra, décl. Ceci est utilisé pour déterminer une gradation et un redimensionnement de la lumière provenant de sources astronomiques dépendant de la bande passante, de type FLOAT.
     \item\textbf{target :} c’est La classe de la source astronomique. Ceci est fourni dans les données de formation. le but du défi est de déterminer correctement la cible (attribuer correctement les probabilités de classification aux objets). Il existe une classe dans l’ensemble de test qui ne se produit pas dans l’ensemble d’apprentissage : class-99 sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage. Int8
     \end{itemize}
+voici une description des attributs des meta-datat: 
 
-
-\newpage
 \begin{figure}[!h]
     \centering
     \includegraphics[width=16cm]{report/figures/explore.jpg}
@@ -129,9 +152,12 @@ Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre di
     \label{fig:my_label}
 \end{figure}
 
+\begin{itemize}
+    \item les attributs du meta-data ne sont pas sur la même échelle
+    \item Il y'a des valeurs manquantes pour l'attribut Distmod
+\end{itemize}
 
-
-\textbf{[training/test]-set :} Série chronologique d’observations des objets. Mappe aux méta-données via object-id.
+\textbf{[2. training/test]-set :} Série chronologique d’observations des objets. Mappe aux méta-données via object-id.
 \begin{itemize}
     \item \textbf{object-id :} Clé étrangère avec les métadonnées de type Int32
     \item \textbf{ mjd :} l’heure en date julienne modifiée (MJD) de l’observation. Peut être lu comme des jours depuis le 17 novembre 1858 Peut être converti au temps de l’époque Unix avec la formule unix-time = (MJD−40587)x 86400. Float64
@@ -140,7 +166,7 @@ Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre di
     \item \textbf{flux-err :} l’incertitude sur la mesure du flux listée ci-dessus. Float32
     \item \textbf{ detected :} Si 1, la luminosité de l’objet est significativement différente au niveau 3-sigma par rapport au modèle de référence. Seuls les objets avec au moins 2 détections sont inclus dans le jeu de données de type Booléen.
 \end{itemize}
-\newpage
+Les attributs qui nous permettent de dire si un objet est galactique ou extragalactique
 voici une description des attributs de data-set: 
 \begin{figure}[!h]
     \centering
@@ -150,7 +176,7 @@ voici une description des attributs de data-set:
 \end{figure}
 \begin{itemize}
     \item Les attributs de formation ne sont pas sur la même échelle.
-    \item Il n'y pas de valeurs manquante sur la table d'entraînement.
+    \item Il n'y pas de valeurs manquantes sur la table d'entraînement.
 \end{itemize}
 
 
@@ -158,42 +184,36 @@ voici une description des attributs de data-set:
 \newline
 \subsection{Les attributs de la base de données les plus prometteurs}
 L’une des questions les plus importantes est quels sont les attributs les plus pertinents qui nous permettent de faire une meilleure classification. tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99” sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage.
-
+le tableau ci-dessous nous montrons une description sur les meta-data.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=15cm,height=5cm]{report/figures/objet-class.jpg}
     \caption{le nombre d'objet dans chaque classe}
     \label{fig:my_label}
 \end{figure}
+\newline
 On peut voir que le nombre d'objet pour chaque classe n'est pas équilibré.
+\newline
 \newline
 Autres attributs très importants sont les attributs qui permettent de positionner un objet dans le ciel comme :
 \begin{itemize}
     \item Les coordonnées de l’objet \textbf{: ra ,decl, gal-l, gal-b}.
-    \item Les attributs qui nous permettent de dire si un objet est galactique ou extragalactique :\textbf{ hostgal-photoz, hostgal-photoz}, un objet est galactique si le redshift=0 extragalactique sinon.
+    \item Le décalage vers le rouge(redshift) :\textbf{ hostgal-photoz, hostgal-photoz}, Ces attributs qui nous permettent de dire si un objet est galactique ou extragalactique, un objet est galactique si le redshift=0 extragalactique sinon.
 \end{itemize}
-
+Dans cette figure nous pouvons voir que chaque classe d'objet est soit galactique soit extragalactique.
+\newline
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=12cm,height=5cm]{report/figures/redshift.jpg}
-    \caption{redshift}
+    \includegraphics[width=12cm,height=7cm]{report/figures/galactic.jpg}
+    \caption{classe galactique et extragalatique}
     \label{fig:my_label}
 \end{figure}
-\newline
 \newline
 \begin{itemize}
     \item L’attribut \textbf{distmod} qui nous donne la distance entre l’objet céleste et le point d’observation.
 \end{itemize}
 
 
-
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=12cm,height=7cm]{report/figures/galactic.jpg}
-    \caption{table des corrélation entre attributs}
-    \label{fig:my_label}
-\end{figure}
 
 \newline
 D’autres attributs nous permettent de mesurer la luminosité de chaque objet lors des observation selon plusieurs filtres :
@@ -234,7 +254,7 @@ dans la table des meta-data les attributs corrélés sont:
 Il n'y a pas d'attributs corrélés dans le training-set.
 \newpage
 \subsection{valeurs manquantes}
-Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs manquantes avant de faire la modélisation, voyons d'abord les attributs qui contiennent les valeurs manquants :
+Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs manquantes qui sont présents généralement en valeurs "NAN", voyons d'abord les attributs qui contiennent les valeurs manquants :
 
 \begin{figure}[!h]
     \centering
@@ -247,6 +267,13 @@ on voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. dans le ch
 
 
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=10cm,height=5cm]{report/figures/redshift.jpg}
+    \caption{redshift}
+    \label{fig:my_label}
+\end{figure}
+\newline
 
 
 
