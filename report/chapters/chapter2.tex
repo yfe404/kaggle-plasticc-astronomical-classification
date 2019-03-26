@@ -5,19 +5,63 @@ Méthode CRISP\cite{crisp}
 Évaluation de nos modèles \cite{plasticc_team_2019_2539456}
 
 \section{Compréhension du problème}
-ml;p;pl;pl;pl;l;
+
 Dans cette section nous .....
 Nous passerons en revue les objectifs de ce projets en termes .... et ....
 Enfin nous proposerons un plan de projet.
 
 
 \section{Compréhension des données}
-\subsection{hfcjgfkjhjgljygfkhfgfc}
+La compréhension des données est l’une des étapes les plus importantes pour la réalisation d’un projet data mining elle vise à déterminer précisément les données à analyser, à identifier la qualité des données disponibles et à faire le lien entre les données
+et leur signification d’un point de vue métier. La Data Science étant basée sur les données seules, les problèmes métiers relatifs à des données existantes, qu’elles soient internes ou externes, peuvent ainsi être résolus par la Data Science. Les données sont mises à
+disposition sur kaggle-plasticc-challenge.
+
+\subsection{présentation des données}
+Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre disposition deux table de données qui sont partagées en données de Test et données d’entraînements .
+\newline
+\newline
+\textbf{[training/test]-set-metadata :} Informations sur les objets qui ne changent pas dans le temps, comme les coordonnées de l’objet, voici les attributs de cette table.
+\begin{itemize}
+    \item \textbf{object-id :} identifiant d’objet unique de type Integer.
+    \item \textbf{ra :} désigne l’ascension droite d’un objet, qui est une coordonnée ciel : co-longitude en degrés de type Float qui est calculé à partir de la différence de la latitude et 90°.
+    \item \textbf{ decl:} la déclinaison d’un objet dans le ciel ou co-latitude en degrés de type Float.
+    \item \textbf{ gal-l :} désigne la longitude galactique en degrés de type Float.
+    \item \textbf{gal-b : }désigne la latitude galactique d’un objet en degrés de type Float.
+    \item \textbf{ ddf :} Un drapeau pour identifier l’objet comme provenant de la zone de levé DDF (avec la valeur DDF = 1 pour le DDF, DDF = 0pour le levé WFD). si les champs DDF sont contenus dans la totalité de la zone d’enquête de la DCE, les incertitudes des flux DDF sont bien moindres de type Booléen.
+    \item \textbf{ hostgal-specz : }le redshift spectroscopique de la source (décalage vers le rouge). Il s’agit d’une mesure extrêmement précise du décalage vers le rouge, disponible pour l’ensemble d’entraînement et une petite fraction de l’ensemble d’essai de type Float, les objet qui sont de redshift=ൡ sont galactiques.
+    \item \textbf{hostgal-photoz :} Redshift photométrique de la galaxie hôte de la source astronomique. Bien que cela soit censé être un proxy pour hostgal-specz, il peut exister de grandes différences entre les deux et doit être considéré comme une version beaucoup moins précise de hostgal-specz cet attribut est de type Float.
+    \item \textbf{hostgal-photoz-err :} L’incertitude sur hostgal-photoz d’après les projections de l’enquête LSST cet attribut est de type Float.
+    \item \textbf{distmod :} La distance à la source calculée à partir de hostgal-photoz et en utilisant la relativité générale qui est une théorie relativiste de la gravitation, c’est-à-dire qu’elle décrit l’influence sur le mouvement des astres de la présence de matière et, plus généralement d’énergie, en tenant compte des principes de la relativité restreinte, cet attribut est de type Float.
+    \item\textbf{mwebv :} MW E (BV). cette «extinction» de la lumière est une propriété de la poussière de la voie lactée (MW) le long de la ligne de mire de la source astronomique et est donc fonction des coordonnées du ciel de la source ra, décl. Ceci est utilisé pour déterminer une gradation et un redimensionnement de la lumière provenant de sources astronomiques dépendant de la bande passante, de type FLOAT.
+    \item\textbf{}
+    \item\textbf{}
+    \item\textbf{}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Préparation des données}\label{sec:data_preparation}
+
 
 \section{Modélisation}
 
-Les étapes précédentes nous ont permis de construire, à partir des données initiales, un data-set qui n'a plus de données manquantes et qui peut être utilisé pour entraîner des modèles de prédictions. Nous avons basé notre modélisation sur deux principales classes de modèles:
+Les étapes précédentes nous ont permis de construire, à partir des données initiales, un data-set qui n'a plus de données manquantes et qui peut être utilisé pour entraîner des modèlprédictions. Nous avons basé notre modélisation sur deux principales classes de modèles:
 \begin{itemize}
     \item \textbf{Les modèles basés sur les caractéristiques :} Il s'agit ici de modèles qui se basent sur les méta données et sur les caractéristiques telles que la moyenne, les quartiles, la valeur maximale, la valeur minimale et bien d'autres pour faire les prédictions. Ces modèles supposent que les séries d'une même classes ont des caractéristiques similaires tandis que les séries de classes différentes ont des caractéristiques qui ne sont pas similaires.
     \item \textbf{Les modèles basés sur les similarités à des sous séries:} Ces modèles se basent sur l'hypothèse qu'il y a dans les séries temporelles des sous séquences qui sont représentatives pour la classes; ces sous-séquences sont appelées \textbf{shapelets} \citep{ye2009time}.
