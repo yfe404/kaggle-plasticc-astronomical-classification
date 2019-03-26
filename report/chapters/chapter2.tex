@@ -121,27 +121,72 @@ Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre di
     \end{itemize}
 
 
-\newline
-\textbf{[training/test]-set :} Série chronologique d’observations des objets. Mappe aux métadonnées via object-id.
+\newpage
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=16cm]{report/figures/explore.jpg}
+    \caption{Description des meta-dat}
+    \label{fig:my_label}
+\end{figure}
+
+
+
+\textbf{[training/test]-set :} Série chronologique d’observations des objets. Mappe aux méta-données via object-id.
 \begin{itemize}
     \item \textbf{object-id :} Clé étrangère avec les métadonnées de type Int32
     \item \textbf{ mjd :} l’heure en date julienne modifiée (MJD) de l’observation. Peut être lu comme des jours depuis le 17 novembre 1858 Peut être converti au temps de l’époque Unix avec la formule unix-time = (MJD−40587)x 86400. Float64
     \item \textbf{passband :} Le nombre entier spécifique à la bande passante LSST, tel que u, g, r, i, z, Y = 0,1,2,3,4,5, dans lequel il a été visualisé. Int8
     \item \textbf{flux :} le flux mesuré (luminosité) dans la bande passante d’observation, indiqué dans la colonne de la bande passante. Ces valeurs ont déjà été corrigées pour tenir compte de l’extinction des poussières (mwebv), bien que les objets fortement éteints aient de plus grandes incertitudes ( flux-err) malgré la correction. Float32
     \item \textbf{flux-err :} l’incertitude sur la mesure du flux listée ci-dessus. Float32
-    \item \textbf{ detected :} Si 1, la luminosité de l’objet est significativement différente au niveau 3-sigma par rapport au modèle de référence. Seuls les objets avec au moins 2 détections sont inclus dans le jeu de données de type Booléen
+    \item \textbf{ detected :} Si 1, la luminosité de l’objet est significativement différente au niveau 3-sigma par rapport au modèle de référence. Seuls les objets avec au moins 2 détections sont inclus dans le jeu de données de type Booléen.
 \end{itemize}
+\newpage
+voici une description des attributs de data-set: 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=18cm]{report/figures/exploreData.jpg}
+    \caption{Description des data-set}
+    \label{fig:my_label}
+\end{figure}
+\begin{itemize}
+    \item Les attributs de formation ne sont pas sur la même échelle.
+    \item Il n'y pas de valeurs manquante sur la table d'entraînement.
+\end{itemize}
+
+
+
 \newline
 \subsection{Les attributs de la base de données les plus prometteurs}
-L’une des questions les plus importantes est quels sont les attributs les plus pertinants qui nous permettent de faire une meilleure classification. tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99” sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage.
+L’une des questions les plus importantes est quels sont les attributs les plus pertinents qui nous permettent de faire une meilleure classification. tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99” sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=15cm,height=5cm]{report/figures/objet-class.jpg}
+    \caption{le nombre d'objet dans chaque classe}
+    \label{fig:my_label}
+\end{figure}
+On peut voir que le nombre d'objet pour chaque classe n'est pas équilibré.
 \newline
 Autres attributs très importants sont les attributs qui permettent de positionner un objet dans le ciel comme :
 \begin{itemize}
     \item Les coordonnées de l’objet \textbf{: ra ,decl, gal-l, gal-b}.
     \item Les attributs qui nous permettent de dire si un objet est galactique ou extragalactique :\textbf{ hostgal-photoz, hostgal-photoz}, un objet est galactique si le redshift=0 extragalactique sinon.
+\end{itemize}
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=12cm,height=5cm]{report/figures/redshift.jpg}
+    \caption{redshift}
+    \label{fig:my_label}
+\end{figure}
+\newline
+\newline
+\begin{itemize}
     \item L’attribut \textbf{distmod} qui nous donne la distance entre l’objet céleste et le point d’observation.
 \end{itemize}
+
+
+
 
 \begin{figure}[!h]
     \centering
