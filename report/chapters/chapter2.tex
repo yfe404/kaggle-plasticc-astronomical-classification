@@ -35,13 +35,13 @@ La figure \ref{fig:modeling_shema} est une représentation schématique du proce
 
 \subsection{Modèles basés sur les shapelets}\label{sec:shapelet_based_model}
 Un Shapelet est défini comme une sous-séquence d'une série temporelle qui est représentative pour la classe \citep{ye2009time}. Ainsi une série temporelle appartient à une classe donnée si elle contient le \textit{shapelet} représentatif de ladite classe. Dans la pratique les séries d'une même classe n'ont pas exactement les mêmes sous-séquences représentatives mais elles ont des sous-séquences qui sont similaires aux sous-séquences représentatives de la classe. 
-La classification des séries temporelles peut être réalisée par un arbre de décision dans lequel l'attribut de division (split) à chaque noeud est un \textit{shapelet} et les données sont séparées en fonction de leur similarité à ce \textit{shapelet}.
+La classification des séries temporelles peut être réalisée par un arbre de décision (Figure \ref{fig:shapelet_based_dt}) dans lequel l'attribut de division (split) à chaque noeud est un \textit{shapelet} et les données sont séparées en fonction de leur similarité à ce \textit{shapelet}.
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=10cm,height=7cm]{report/figures/shapelet-based-tree.jpg}
     \caption{Classification des séries temporelles basée sur les shapelets}
-    \label{fig:my_label}
+    \label{fig:shapelet_based_dt}
 \end{figure}
 
 La classification basées sur les shapelets a trois avantages \citep{ye2009time}:
@@ -64,7 +64,16 @@ Commençons par donner quelques définitions formelles:
 \subsubsection{Mesure de la similarité}
 
 \subsubsection{Extraction des shapelets}
-Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. 
+Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. La figure \ref{fig:shapelet_example} donne quelques shapelets que nous avons appris sur plasticc. Les couleurs correspondent aux filtres.
+
+\begin{figure}[!h]
+    \centering
+    \begin{tabular}{c|c}
+         \includegraphics[width=7cm,height=5cm]{report/figures/shapelet.png} & \includegraphics[width=7cm,height=5cm]{report/figures/shapelet2.png}
+    \end{tabular}
+    \caption{Exemple de shapelets appris sur PLASTICC}
+    \label{fig:shapelet_example}
+\end{figure}
 
 \section{Évaluation}
 \section{Déploiement}
