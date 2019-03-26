@@ -49,14 +49,23 @@ Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre di
 \end{itemize}
 \newline
 \subsection{Les attributs de la base de données les plus prometteurs}
-L’une des questions les plus importantes est quels sont les attributs les plus pertinants qui nous permettent de faire une meilleure classification. tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99” sert de classe ”autre” pour les objets n’appartenant à aucune des ൢ൥ classes de l’ensemble d’apprentissage.
+L’une des questions les plus importantes est quels sont les attributs les plus pertinants qui nous permettent de faire une meilleure classification. tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99” sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage.
 \newline
 Autres attributs très importants sont les attributs qui permettent de positionner un objet dans le ciel comme :
 \begin{itemize}
     \item Les coordonnées de l’objet \textbf{: ra ,decl, gal-l, gal-b}.
     \item Les attributs qui nous permettent de dire si un objet est galactique ou extragalactique :\textbf{ hostgal-photoz, hostgal-photoz}, un objet est galactique si le redshift=0 extragalactique sinon.
+
     \item L’attribut \textbf{distmod} qui nous donne la distance entre l’objet céleste et le point d’observation.
 \end{itemize}
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=12cm,height=7cm]{report/figures/galactic.jpg}
+    \caption{table des corrélation entre attributs}
+    \label{fig:my_label}
+\end{figure}
+
 \newline
 D’autres attributs nous permettent de mesurer la luminosité de chaque objet lors des observation selon plusieurs filtres :
 \begin{itemize}
@@ -77,11 +86,21 @@ dans le jeu de données.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=12cm,height=7cm]{report/figures/correlation.jpg}
-    \caption{table des corrélation entre attributs}
+    \caption{table des corrélation pour les meta_data}
     \label{fig:my_label}
 \end{figure}
 
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=12cm,height=7cm]{report/figures/correlation1.jpg}
+    \caption{table des corrélation pour les data-est}
+    \label{fig:my_label}
+\end{figure}
+
+
+\newpage
+\subsection{}
 
 
 
@@ -108,16 +127,20 @@ Dans la section de préparation des données, on parlera des étapes qu’on ava
 \textbf{Choix des colonnes} : Dans les Meta data, on a les deux colonnes \textbf{hostgal-specz} et\textbf{ hostgal-photoz} présentant la même donnée mes en utilisant deux manière mesure différentes. Les données de la colonne \textbf{hostgal-specz} ne sont pas disponibles pour les données de test donc il faut l’éliminer. On aussi la colonne \textbf{MWEBV} qui n’est pas significative pour notre modèle. Pour les données, on a considéré comme hypothèse que toutes les colonnes seront utiles pour notre modélisation.
 \subsection{Génération des données manquantes}
  Dans notre data set on un nombre important des données manquantes. On a supposé que le fait d’avoir des données manquantes impactera négativement notre tache de prédiction. Donc on va prédire ces valeurs avant de passer à la phase de construction de nouveau features pour notre modélisation. Pour faire cela on a utilisé les processus gaussiens. Dans cette méthode au lieu de créer une seule fonction  (dans le cas de régression), elle produit une distribution de toutes les fonctions possibles en fonction des points d'apprentissage. Pour ce faire, elle s’appuie sur la définition d’un processus gaussien, tel que « toute collection de variables aléatoires dans laquelle un sous-ensemble arbitraire de variables à une distribution gaussienne conjointe ». Cela signifie toutefois que la technique suppose que toutes les caractéristiques, y compris toutes les dimensions de x et y, ont une distribution gaussienne. Bien que cela semble limitant, cette hypothèse permet au système de s'exercer à l'aide de la matrice de covariance de la distribution jointe.
-La figure est une représentation du processus qu'on a développé pour la génération des données manquantes  des colonnes \textbf{flux} et \textbf{flux-error}
-
-
-
+La figure \ref{fig:blackbox_shema} est une présentation du processus qu'on a développé pour la génération des données manquantes  des colonnes \textbf{flux} et \textbf{flux-error}.
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=12cm,height=7cm]{report/figures/blackbox.png}
+    \caption{Schéma de prédiction des valeur manquante de flux et flux-error}
+    \label{fig:blackbox_shema}
+\end{figure}
+\subsection{Génération de nouveaux features}
 
 
 
 \section{Modélisation}
 
-Les étapes précédentes nous ont permis de construire, à partir des données initiales, un data-set qui n'a plus de données manquantes et qui peut être utilisé pour entraîner des modèlprédictions. Nous avons basé notre modélisation sur deux principales classes de modèles:
+Les étapes précédentes nous ont permis de construire, à partir des données initiales, un data-set qui n'a plus de données manquantes et qui peut être utilisé pour entraîner des modèles de prédictions. Nous avons basé notre modélisation sur deux principales classes de modèles:
 \begin{itemize}
     \item \textbf{Les modèles basés sur les caractéristiques :} Il s'agit ici de modèles qui se basent sur les méta données et sur les caractéristiques telles que la moyenne, les quartiles, la valeur maximale, la valeur minimale et bien d'autres pour faire les prédictions. Ces modèles supposent que les séries d'une même classes ont des caractéristiques similaires tandis que les séries de classes différentes ont des caractéristiques qui ne sont pas similaires.
     \item \textbf{Les modèles basés sur les similarités à des sous séries:} Ces modèles se basent sur l'hypothèse qu'il y a dans les séries temporelles des sous séquences qui sont représentatives pour la classes; ces sous-séquences sont appelées \textbf{shapelets} \citep{ye2009time}.
