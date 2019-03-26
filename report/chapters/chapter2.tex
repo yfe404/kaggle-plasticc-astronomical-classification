@@ -3,7 +3,6 @@
 Méthode CRISP\cite{crisp}
 
 Évaluation de nos modèles \cite{plasticc_team_2019_2539456}
-
 \section{Compréhension du problème}
 Étant la première tâche que nous avons réalisée, la phase de compréhension du problème est la première phase de gestion de projet de datamining. Cette première étape consiste à bien comprendre les éléments métiers et problématique que le datamining vise à résoudre ou à améliorer.
 Pour mieux cerner la problématique et comprendre les objectifs à atteindre, nous allons débuter par contextualiser le problème.
@@ -167,6 +166,7 @@ certain attributs peuvent êtres exclus pour la modélisations car ils peuvent n
 dans le jeu de données.
 \end{itemize}
 \subsection{corrélations entres attributs}
+On étudie dans cette partie les attributs corrélés dans les tables data-set et meta-data, regardons ces deux figures: 
 \newline
 \begin{figure}[!h]
     \centering
@@ -175,20 +175,30 @@ dans le jeu de données.
     \label{fig:my_label}
 \end{figure}
 
-
+dans la table des meta-data les attributs corrélés sont: 
+\begin{itemize}
+    \item \textbf{hostgal-photoz et distmod} cela s'explique par le faite que les valeurs du distmod sont calculées a partir des valeurs du hostgal-photoz.
+    \item \textbf{hostgal-photoz et hostagal-spectz} ces deux attributs sont corrélés puisque les deux concerne l'étude de la lumière ou le décalage vers le rouge, sauf que l'étude spectroscopique est plus précises.
+\end{itemize}
 \begin{figure}[!h]
     \centering
     \includegraphics[width=12cm,height=7cm]{report/figures/correlation1.jpg}
     \caption{table des corrélation pour les data-est}
     \label{fig:my_label}
 \end{figure}
-
-
+Il n'y a pas d'attributs corrélés dans le training-set.
 \newpage
-\subsection{}
+\subsection{valeurs manquantes}
+Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs manquantes avant de faire la modélisation, voyons d'abord les attributs qui contiennent les valeurs manquants :
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=12cm,height=7cm]{report/figures/distmod.jpg}
+    \caption{pourcentage de valeurs manquantes pour Distmod}
+    \label{fig:my_label}
+\end{figure}
 
-
+on voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. dans le chapitre suivant on verra comment prédire ces données. 
 
 
 
@@ -220,7 +230,7 @@ La figure \ref{fig:blackbox_shema} est une présentation du processus qu'on a d�
     \label{fig:blackbox_shema}
 \end{figure}
 \subsection{Génération de nouveaux features}
-
+Pour faire cela, on a utilisé Césium, une librairie permettant de calcul des nouveaux features pour les séries temporelles. 
 \section{Modélisation}
 Les étapes précédentes nous ont permis de construire, à partir des données initiales, un data-set qui n'a plus de données manquantes et qui peut être utilisé pour entraîner des modèles de prédictions. Nous avons basé notre modélisation sur deux principales classes de modèles:
 \begin{itemize}
