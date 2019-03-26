@@ -31,7 +31,7 @@ En plus des excellentes conditions d'observation, LSST bénéficiera d'une infra
 \begin{figure}[!h]
     \centering
     \includegraphics[width=12cm,height=7cm]{report/figures/LSST.jpg}
-    \caption{Télescope LST}
+    \caption{Télescope LSST}
     \label{fig:modeling_shema}
 \end{figure}
 \newline Il sera construit en tenant compte des paramètres définis sur le tableau ci-dessous.
@@ -121,11 +121,10 @@ Le jeux de données mis à notre disposition fera l’objet d’une étude déta
 
 \section{Compréhension des données}
 La compréhension des données est l’une des étapes les plus importantes pour la réalisation d’un projet data mining elle vise à déterminer précisément les données à analyser, à identifier la qualité des données disponibles et à faire le lien entre les données
-et leur signification d’un point de vue métier. La Data Science étant basée sur les données seules, les problèmes métiers relatifs à des données existantes, qu’elles soient internes ou externes, peuvent ainsi être résolus par la Data Science. Les données sont mises à
-disposition sur kaggle-plasticc-challenge.
+et leur signification d’un point de vue métier. La Data Science étant basée sur les données seules, les problèmes métiers relatifs à des données existantes, qu’elles soient internes ou externes, peuvent ainsi être résolus par la Data Science.
 
 \subsection{présentation des données}
-Pour la réalisation du projet l’équipe plasticc-challenge à mit à notre disposition deux tables de données qui sont partagées en données de Test et données d’entraînements .
+Pour la réalisation du projet l’équipe  plasticc astronomical-classification challenge à mit à notre disposition sur kaggle deux tables de données qui sont partagées en données de Test et données d’entraînements .
 \newline
 \newline
 \textbf{1. [training/test]-set-metadata :} Informations sur les objets qui ne changent pas dans le temps, comme les coordonnées de l’objet, voici les attributs de cette table.
@@ -184,7 +183,8 @@ voici une description des attributs de data-set:
 \newline
 \subsection{Les attributs de la base de données les plus prometteurs}
 L’une des questions les plus importantes est quels sont les attributs les plus pertinents qui nous permettent de faire une meilleure classification. tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99” sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage.
-le tableau ci-dessous nous montrons une description sur les meta-data.
+\newpage
+le tableau ci-dessous nous montre la distribution des objets sur les différentes classes.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=15cm,height=5cm]{report/figures/objet-class.jpg}
@@ -200,12 +200,13 @@ Autres attributs très importants sont les attributs qui permettent de positionn
     \item Les coordonnées de l’objet \textbf{: ra ,decl, gal-l, gal-b}.
     \item Le décalage vers le rouge(redshift) :\textbf{ hostgal-photoz, hostgal-photoz}, Ces attributs qui nous permettent de dire si un objet est galactique ou extragalactique, un objet est galactique si le redshift=0 extragalactique sinon.
 \end{itemize}
+
 Dans cette figure nous pouvons voir que chaque classe d'objet est soit galactique soit extragalactique.
-\newline
+
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=12cm,height=7cm]{report/figures/galactic.jpg}
-    \caption{classe galactique et extragalatique}
+    \includegraphics[width=10cm,height=5cm]{report/figures/galactic.jpg}
+    \caption{classe galactique et extragalactique}
     \label{fig:my_label}
 \end{figure}
 \newline
@@ -224,37 +225,55 @@ D’autres attributs nous permettent de mesurer la luminosité de chaque objet l
 L’observation est faites sur des séries temporelles, la luminosité et la position d’un objets varie selon le temps, l’attribut utilisé ici est le \textbf{mjd}, qui est l’heure en date julienne modifiée.
 
 \subsection{Les attributs qui semblent sans intérêt et peuvent être exclus}
-certain attributs peuvent êtres exclus pour la modélisations car ils peuvent nous fausser les résultats, comme les attributs identifiant, ou les attributs aui nous permettent pas de faire une bonne classification, dans notre cas la plupart des attributs sont important, mais on peut mettre en vue certain autres comme :
+certain attributs peuvent êtres exclus pour la modélisations car ils peuvent nous fausser les résultats, comme les attributs identifiant, ou les attributs qui nous permettent pas de faire une bonne classification, dans notre cas la plupart des attributs sont important, mais on peut mettre en vue certain autres comme :
 \begin{itemize}
     \item \textbf{id-object }: qui est l’identifiant d’un objet dans une classe et qui sert de clés entre les deux table data et meta-data.
     \item \textbf{detected }: de type booléen, Seuls les objets avec au moins ൣ détections sont inclus
 dans le jeu de données.
 \end{itemize}
 \subsection{corrélations entres attributs}
-On étudie dans cette partie les attributs corrélés dans les tables data-set et meta-data, regardons ces deux figures: 
-\newline
+On étudie dans cette partie les attributs corrélés dans les tables data-set et meta-data, regardons les attributs correles sur les meta-data: 
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=12cm,height=7cm]{report/figures/correlation.jpg}
-    \caption{table des corrélation pour les meta_data}
+    \includegraphics[width=17cm,height=5cm]{report/figures/correlation.jpg}
+    \caption{table des corrélation pour les meta-data}
     \label{fig:my_label}
 \end{figure}
 
-dans la table des meta-data les attributs corrélés sont: 
+Dans la table des meta-data les attributs corrélés sont: 
 \begin{itemize}
     \item \textbf{hostgal-photoz et distmod} cela s'explique par le faite que les valeurs du distmod sont calculées a partir des valeurs du hostgal-photoz.
     \item \textbf{hostgal-photoz et hostagal-spectz} ces deux attributs sont corrélés puisque les deux concerne l'étude de la lumière ou le décalage vers le rouge, sauf que l'étude spectroscopique est plus précises.
 \end{itemize}
+Voici une autre figure qui montre la relation entre les deux attributs hostgal-photoz et hostgal-specz:
+
 \begin{figure}[!h]
     \centering
-    \includegraphics[width=12cm,height=7cm]{report/figures/correlation1.jpg}
+    \includegraphics[width=10cm,height=5cm]{report/figures/redshift.jpg}
+    \caption{hostgal-photoz et hostgal-specz}
+    \label{fig:my_label}
+\end{figure}
+
+\newline Voici une autre figure qui nous montre les corrélations entre les attributs du training set:
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=10cm,height=5cm]{report/figures/correlation1.jpg}
     \caption{table des corrélation pour les data-est}
     \label{fig:my_label}
 \end{figure}
 Il n'y a pas d'attributs corrélés dans le training-set.
+
+
+
 \newpage
 \subsection{valeurs manquantes}
-Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs manquantes qui sont présents généralement en valeurs "NAN", voyons d'abord les attributs qui contiennent les valeurs manquants :
+Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs manquantes qui sont présentes dan notre data valeurs "NAN", voyons d'abord les attributs qui contiennent les valeurs manquantes :
+\newline
+\textbf{1. sur les données d'entraînements}
+\newline
+\begin{itemize}
+    \item L'attribut \textbf{Distmod} contient plusieurs valeurs manquantes. 
+\end{itemize}
 
 \begin{figure}[!h]
     \centering
@@ -262,28 +281,19 @@ Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs
     \caption{pourcentage de valeurs manquantes pour Distmod}
     \label{fig:my_label}
 \end{figure}
-
-on voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. dans le chapitre suivant on verra comment prédire ces données. 
-
-
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics[width=10cm,height=5cm]{report/figures/redshift.jpg}
-    \caption{redshift}
-    \label{fig:my_label}
-\end{figure}
+On voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. dans le chapitre suivant on verra comment prédire ces données. 
 \newline
 
+\begin{itemize}
+    \item Il y'a également des valeurs manquantes sur l'attribut flux et flux-err sur certaine série temporelle qui n'ont pas été données dans les data. ces données seront prédites dans les chapitres suivants.
+\end{itemize}
+\newline
 
-
-
-
-
-
-
-
-
+\textbf{2. sur les données de test}: Il y'a également des valeurs manquantes dans les données de test .
+\newline
+\begin{itemize}
+    \item \textbf{hostgal-spectz}: il y'a beaucoup de valeurs manquantes sur cet attribut dans les données de test, même si les données de la spectroscope sont plus précise que la photométrie mais s'avère difficile et coûteux de les avoir, donc on n'utilisera pas cet attribut pour le prédiction du Distmod ni pour l'entraînement.  
+\end{itemize}
 
 
 
