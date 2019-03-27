@@ -371,6 +371,8 @@ Dans la formule précédente $ Sim $ peut être n'importe qu'elle mesure de simi
 \subsubsection{Extraction des shapelets}
 Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. La figure \ref{fig:shapelet_example} donne quelques shapelets que nous avons appris sur plasticc. Les couleurs correspondent aux différents filtres.
 
+L'apprentissage des shapelets s'est fait sur $ 20 $ époques avec comme fonction d'optimisation AdaGrad\cite{duchi2011adaptive} et une régularisation $L2$ de coefficient $ 0.01 $. 
+
 \begin{figure}[!h]
     \centering
     \begin{tabular}{c|c}
@@ -380,6 +382,18 @@ Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{ts
     \label{fig:shapelet_example}
 \end{figure}
 
-\section{Évaluation}
+\subsubsection{Modèle de prédiction}
+Une fois les shapelets extraits et la similarité entre un shapelet et une séries pouvant être calculée il est possible d'utiliser n'importe quel modèle de prédiction pour faire la classification. Nous avons utilisé une méthode d'apprentissage ensembliste XGBoost\cite{chen2016xgboost}. Pour chaque série temporelle, on construit un vecteur dont la taille est le nombre de shapelets et la composante $ i $ est la similarité entre la série et le shapelet $ i $. Ce sont ces vecteurs de distances aux différents shapelets qui sont passés au modèle de prédiction. Nous avons entraîné le modèle sur les données d'apprentissage de PLASTICC en utilisant une validation croisée à $ 4 $-folds.
 
-\section{Déploiement}
+\section{Évaluation}
+\subsection{Modèle basé sur les caractéristiques}
+
+\subsection{Modèle basé sur les shapelets}
+Nous n'avons pas pu faire une évaluation effective de notre approche. En effet pour vraiment savoir si nos modèles généralisent bien, il aurait fallu faire une soumission sur Kaggle dans le cadre du challenge car nous n'avons pas les labels des données de test. Les données de test de PLASTICC sont fournit dans un unique fichier qui fait $ 18$Go, et il nous aurait fallu des jours (plus de de 8 jours) pour faire toutes les prédictions en utilisant les ressources à notre disposition. Nous pouvons néanmoins citer quelques hypothèses d'amélioration:
+\begin{itemize}
+    \item Le modèle d'apprentissage des shapelets fournit par tslearn est un réseau de neurones dont nous n'avons pas un contrôle total. En effet nous ne pouvons pas modifier le nombre de couches, ni le nombre de neurones par couche; nous ne pouvons pas modifier son architecture. De plus ce modèle utilise la distance euclidienne comme mesurer de similarité, ce qui n'est pas le plus adéquat pour des données incertaines.
+    \item utiliser la mesure de similarité FOTS en lieu et place de DTW conduirait à de meilleurs résultats
+    \item l'utilisation des méta-données dans les processus d'apprentissage et de prédiction pourrait également les performances.
+    \item prendre en compte a détection de nouveaux objets. En effet le modèle ne peut que prédire les objets similaires à ceux qui sont dans les données d'apprentissage, pourtant ces données d'apprentissage ne sont pas représentatives pour les données de test.
+    \item Utiliser d'autres modèles de prédiction
+\end{itemize}
