@@ -298,7 +298,7 @@ On voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. dans le ch
 
 
 
-\section{Préparation des données}
+\section{Préparation des données}\label{sec:data_preparation}
 Dans la section de préparation des données, on parlera des étapes qu’on avait réalisé pour obtenir nos données de la modélisation.
 \subsection{Sélection des données}
 \textbf{Choix des colonnes} : Dans les Meta data, on a les deux colonnes \textbf{hostgal-specz} et\textbf{ hostgal-photoz} présentant la même donnée mes en utilisant deux manière mesure différentes. Les données de la colonne \textbf{hostgal-specz} ne sont pas disponibles pour les données de test donc il faut l’éliminer. On aussi la colonne \textbf{MWEBV} qui n’est pas significative pour notre modèle. Pour les données, on a considéré comme hypothèse que toutes les colonnes seront utiles pour notre modélisation.
@@ -341,7 +341,7 @@ La classification des séries temporelles peut être réalisée par un arbre de 
     \label{fig:shapelet_based_dt}
 \end{figure}
 
-La classification basées sur les shapelets a trois avantages \citep{ye2009time}:
+La classification basée sur les shapelets a trois avantages \citep{ye2009time}:
 \begin{itemize}
     \item les résultats sont interprétables 
     \item la robustesse: les shapelets sont des caractéristiques locales des séries temporelles. S'ils sont bien extraits, ils réduisent considérablement le bruit dans les données et rendent ainsi le modèle plus robuste
@@ -352,16 +352,16 @@ Pour pourvoir appliquer ce modèle il faut pourvoir extraire les shapelets et d�
 
 Commençons par donner quelques définitions formelles:
 
-\textbf{Une série temporelle \textit{T}} est une ensemble ordonné de \textit{m} valeurs réelles. $ T = t_1, t_2,...,t_m $. \textit{m} est la taille de la séries.
+\textbf{Une série temporelle \textit{T}} est un ensemble ordonné de \textit{m} valeurs réelles. $ T = t_1, t_2,...,t_m $. \textit{m} est la taille de la série.
 
-\textbf{Une sous-série \textit{S} de \textit{T}} est un sous ensemble ordonné de \textit{l} ($ l \leq m $) valeurs de \textit{T}. $ S = T_p, T_{p+1},..., T_{p+l-1}, pour 1 \leq p \leq m-l+1 $. Le nombre de sous-séries peut très rapidement exploser lorsque $l$ est négligeable devant $m$. En effet une série de taille $m$ a exactement $ m-l+1 $ sous-séries de taille $l$. Les données de test de PLASTICC forment un ensemble de $ 3492890 $ de taille $1094$ chacune après qu'on l'imputation des valeurs manquantes. Le nombre de sous-séries possible est donc de $ 3492890 \times (1094 - l + 1)$, un algorithme naif serait donc inutilisable en pratique.
+\textbf{Une sous-série \textit{S} de \textit{T}} est un sous ensemble ordonné de \textit{l} ($ l \leq m $) valeurs de \textit{T}. $ S = T_p, T_{p+1},..., T_{p+l-1}, pour 1 \leq p \leq m-l+1 $. Le nombre de sous-séries peut très rapidement exploser lorsque $l$ est négligeable devant $m$. En effet une série de taille $m$ a exactement $ m-l+1 $ sous-séries de taille $l$. Les données de test de PLASTICC forment un ensemble de $ 3492890 $ de taille $1094$ chacune après l'imputation des valeurs manquantes. Le nombre de sous-séries possible est donc de $ 3492890 \times (1094 - l + 1)$, un algorithme naïf serait donc inutilisable en pratique.
 
-    \textbf{Un Shapelet} est une sous-séries qui permet de séparer l'ensemble des séries temporelles en deux classes suffisamment hétérogènes pour que l'une des classes contienne des séries qui ont une sous-séquence similaire au shapelet tandis que l'autre classe contient des séries qui n'ont pas de sous-séquence similaire au shapelet\cite{fotso2018frobenius}. 
+\textbf{Un Shapelet} est une sous-séries qui permet de séparer l'ensemble des séries temporelles en deux classes suffisamment hétérogènes pour que l'une des classes contienne des séries qui ont une sous-séquence similaire au shapelet tandis que l'autre classe contient des séries qui n'ont pas de sous-séquence similaire au shapelet\cite{fotso2018frobenius}. 
 
 \subsubsection{Mesure de la similarité}
-Il existe dans la littérature plusieurs métriques pour mesurer la similarité entre deux séries temporelles de même taille. Nous avons par exemple la distance euclidienne, DTW (Dynamic Time Warping), DUST, PROUD, MUNICH et FOTS \cite{fotso2018frobenius}. Les séries temporelles de PLASTICC étant incertaines, FOTS serait la métrique la plus adaptée car elle est plus robuste à l'incertitude. Cependant, étant contraint par le temps, nous avons utilisé DTW car tslean l'implémente déjà et le calcul des valeurs propres dont a besoin FOTS sur un dataset aussi grand que celui de PLASTICC prendrait beaucoup trop de temps.
+Il existe dans la littérature plusieurs métriques pour mesurer la similarité entre deux séries temporelles de même taille. Nous avons par exemple la distance euclidienne, DTW (Dynamic Time Warping), DUST, PROUD, MUNICH et FOTS \cite{fotso2018frobenius}. Les séries temporelles de PLASTICC étant incertaines, FOTS serait la métrique la plus adaptée car elle est plus robuste à l'incertitude. Cependant, étant contraint par le temps, nous avons utilisé DTW car déjà implémenté par la bibliothèque que nous utilisons et le calcul des valeurs propres dont a besoin FOTS sur un dataset aussi grand que celui de PLASTICC prendrait beaucoup trop de temps.
 
-La similarité entre une séries $ T $ et une sous-séries $ S $ de taille inférieure ou égales est définie comme la similarité entre $ S $ et la sous-séries de $ T $ de même taille de de $ S $ et la plus similaire à $ S $. 
+La similarité entre une série $ T $ et une sous-série $ S $ de taille inférieure ou égales est définie comme la similarité entre $ S $ et la sous-séries de $ T $ de même taille que $ S $ et la plus similaire à $ S $. 
 $$
 Sim(S, T) = min \left \{ Sim(S, S'), |S|=|S'| \:  \forall S'\: sous \: séries \: de \: T \right \}
 $$
@@ -369,7 +369,7 @@ $$
 Dans la formule précédente $ Sim $ peut être n'importe qu'elle mesure de similarité entre deux séries temporelles. 
 
 \subsubsection{Extraction des shapelets}
-Pour apprende les shapelets nous avons utilisé la bibliothèque tslean\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. La figure \ref{fig:shapelet_example} donne quelques shapelets que nous avons appris sur plasticc. Les couleurs correspondent aux différents filtres.
+Pour apprendre les shapelets nous avons utilisé la bibliothèque tslearn\citep{tslearn} qui implémente l'approche proposée par \citet{grabocka2014learning}. Cette approche considère la recherche des shapelets optimaux comme un problème d'optimisation qui débute par un choix aléatoire des shapelets puis les optimise au fur et à mesure en diminuant le taux d'erreur de classification. Le but est de ne pas rechercher dans l'ensemble des candidats possibles car trop grand. tslearn fournit également une heuristique qui permet de déterminer le nombre et la longueur de chacun des shapelets à apprendre. Selon cette heuristique, il nous a fallut apprendre sur les données de plasticc $ 109 $ shapelets de tailles $ 8 $ et $ 218 $ shapelets de tailles $ 7 $. La figure \ref{fig:shapelet_example} donne quelques shapelets que nous avons appris sur plasticc. Les couleurs correspondent aux différents filtres.
 
 L'apprentissage des shapelets s'est fait sur $ 20 $ époques avec comme fonction d'optimisation AdaGrad\cite{duchi2011adaptive} et une régularisation $L2$ de coefficient $ 0.01 $. 
 
@@ -383,17 +383,16 @@ L'apprentissage des shapelets s'est fait sur $ 20 $ époques avec comme fonction
 \end{figure}
 
 \subsubsection{Modèle de prédiction}
-Une fois les shapelets extraits et la similarité entre un shapelet et une séries pouvant être calculée il est possible d'utiliser n'importe quel modèle de prédiction pour faire la classification. Nous avons utilisé une méthode d'apprentissage ensembliste XGBoost\cite{chen2016xgboost}. Pour chaque série temporelle, on construit un vecteur dont la taille est le nombre de shapelets et la composante $ i $ est la similarité entre la série et le shapelet $ i $. Ce sont ces vecteurs de distances aux différents shapelets qui sont passés au modèle de prédiction. Nous avons entraîné le modèle sur les données d'apprentissage de PLASTICC en utilisant une validation croisée à $ 4 $-folds.
+Une fois les shapelets extraits et la similarité entre un shapelet et une séries pouvant être calculée il est possible d'utiliser n'importe quel modèle de prédiction pour faire la classification. Nous avons utilisé la méthode d'apprentissage ensembliste XGBoost\cite{chen2016xgboost}. Pour chaque série temporelle, on construit un vecteur dont la taille est le nombre de shapelets et la composante $ i $ est la similarité entre la série et le shapelet $ i $. Ce sont ces vecteurs de distances aux différents shapelets qui sont passés au modèle de prédiction. Nous avons entraîné le modèle sur les données d'apprentissage de PLASTICC en utilisant une validation croisée à $ 4 $-folds.
 
 \section{Évaluation}
 \subsection{Modèle basé sur les caractéristiques}
 
 \subsection{Modèle basé sur les shapelets}
-Nous n'avons pas pu faire une évaluation effective de notre approche. En effet pour vraiment savoir si nos modèles généralisent bien, il aurait fallu faire une soumission sur Kaggle dans le cadre du challenge car nous n'avons pas les labels des données de test. Les données de test de PLASTICC sont fournit dans un unique fichier qui fait $ 18$Go, et il nous aurait fallu des jours (plus de de 8 jours) pour faire toutes les prédictions en utilisant les ressources à notre disposition. Nous pouvons néanmoins citer quelques hypothèses d'amélioration:
+Nous n'avons pas pu faire une évaluation effective de notre approche. En effet pour vraiment savoir si le modèle généralise bien, il aurait fallu faire une soumission sur Kaggle dans le cadre du challenge car nous n'avons pas les labels des données de test. Les données de test de PLASTICC sont fournit dans un unique fichier qui fait $ 18$Go, et il nous aurait fallu des jours (plus de de 8 jours) pour faire toutes les prédictions en utilisant les ressources à notre disposition. Nous pouvons néanmoins citer quelques hypothèses d'amélioration:
 \begin{itemize}
     \item Le modèle d'apprentissage des shapelets fournit par tslearn est un réseau de neurones dont nous n'avons pas un contrôle total. En effet nous ne pouvons pas modifier le nombre de couches, ni le nombre de neurones par couche; nous ne pouvons pas modifier son architecture. De plus ce modèle utilise la distance euclidienne comme mesurer de similarité, ce qui n'est pas le plus adéquat pour des données incertaines.
     \item utiliser la mesure de similarité FOTS en lieu et place de DTW conduirait à de meilleurs résultats
-    \item l'utilisation des méta-données dans les processus d'apprentissage et de prédiction pourrait également les performances.
-    \item prendre en compte a détection de nouveaux objets. En effet le modèle ne peut que prédire les objets similaires à ceux qui sont dans les données d'apprentissage, pourtant ces données d'apprentissage ne sont pas représentatives pour les données de test.
-    \item Utiliser d'autres modèles de prédiction
+    \item l'utilisation des méta-données dans les processus d'apprentissage et de prédiction pourrait également améliorer le modèle.
+    \item prendre en compte la détection de nouveaux objets (classe 99). En effet le modèle ne peut que prédire les objets similaires à ceux qui sont dans les données d'apprentissage, pourtant ces données d'apprentissage ne sont pas représentatives pour les données de test.
 \end{itemize}
