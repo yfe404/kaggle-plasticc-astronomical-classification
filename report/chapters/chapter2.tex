@@ -11,7 +11,7 @@ La compréhension des données est l’une des étapes les plus importantes pour
 et leur signification d’un point de vue métier. La Data Science étant basée sur les données seules, les problèmes métiers relatifs à des données existantes, qu’elles soient internes ou externes, peuvent ainsi être résolus par la Data Science.
 
 \subsection{présentation des données}
-Pour la réalisation du projet l’équipe  plasticc astronomical-classification challenge à mit à notre disposition sur kaggle deux tables de données qui sont partagées en données de Test et données d’entraînements .
+Pour la réalisation du projet, l’équipe PLAsTICC a mis à notre disposition sur Kaggle deux tables de données qui sont partagées en données de test et données d’entraînements.
 \newline
 \newline
 \textbf{1. [training/test]-set-metadata :} Informations sur les objets qui ne changent pas dans le temps, comme les coordonnées de l’objet, voici les attributs de cette table.
@@ -29,12 +29,12 @@ Pour la réalisation du projet l’équipe  plasticc astronomical-classification
     \item\textbf{mwebv :} MW E (BV). cette «extinction» de la lumière est une propriété de la poussière de la voie lactée (MW) le long de la ligne de mire de la source astronomique et est donc fonction des coordonnées du ciel de la source ra, décl. Ceci est utilisé pour déterminer une gradation et un redimensionnement de la lumière provenant de sources astronomiques dépendant de la bande passante, de type FLOAT.
     \item\textbf{target :} c’est La classe de la source astronomique. Ceci est fourni dans les données de formation. le but du défi est de déterminer correctement la cible (attribuer correctement les probabilités de classification aux objets). Il existe une classe dans l’ensemble de test qui ne se produit pas dans l’ensemble d’apprentissage : class-99 sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage. Int8
     \end{itemize}
-voici une description des attributs des meta-datat: 
+voici une description des attributs des meta-datata: 
 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=16cm]{report/figures/explore.jpg}
-    \caption{Description des meta-dat}
+    \caption{Description des meta-data}
     \label{fig:my_label}
 \end{figure}
 
@@ -69,7 +69,7 @@ voici une description des attributs de data-set:
 
 \newline
 \subsection{Les attributs de la base de données les plus prometteurs}
-L’une des questions les plus importantes est quels sont les attributs les plus pertinents qui nous permettent de faire une meilleure classification. tout d’abord nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15ème classe “la classe 99” sert de classe ”autre” pour les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage.
+L’une des questions les plus importantes est quels sont les attributs les plus pertinents qui nous permettent de faire une meilleure classification. Tout d’abord, nous nous intéressons à l’attribut qu’on doit prédire qui est \textbf{la classe target}, il y’a 14 classes différentes et la 15e classe “la classe 99” rassemble les objets n’appartenant à aucune des 14 classes de l’ensemble d’apprentissage.
 \newpage
 le tableau ci-dessous nous montre la distribution des objets sur les différentes classes.
 \begin{figure}[!h]
@@ -82,13 +82,13 @@ le tableau ci-dessous nous montre la distribution des objets sur les différente
 On peut voir que le nombre d'objet pour chaque classe n'est pas équilibré.
 \newline
 \newline
-Autres attributs très importants sont les attributs qui permettent de positionner un objet dans le ciel comme :
+Autres attributs très importants sont les attributs qui permettent de positionner un objet dans le ciel comme:
 \begin{itemize}
     \item Les coordonnées de l’objet \textbf{: ra ,decl, gal-l, gal-b}.
     \item Le décalage vers le rouge(redshift) :\textbf{ hostgal-photoz, hostgal-photoz}, Ces attributs qui nous permettent de dire si un objet est galactique ou extragalactique, un objet est galactique si le redshift=0 extragalactique sinon.
 \end{itemize}
 
-Dans cette figure nous pouvons voir que chaque classe d'objet est soit galactique soit extragalactique.
+Sur cette figure, nous pouvons voir que chaque classe d'objets est soit galactique soit extragalactique.
 
 \begin{figure}[!h]
     \centering
@@ -104,22 +104,21 @@ Dans cette figure nous pouvons voir que chaque classe d'objet est soit galactiqu
 
 
 \newline
-D’autres attributs nous permettent de mesurer la luminosité de chaque objet lors des observation selon plusieurs filtres :
+D’autres attributs nous permettent de mesurer la luminosité de chaque objet lors des observations selon plusieurs filtres: 
 \begin{itemize}
     \item \textbf{passband, flux, flux-erreur}.
 \end{itemize}
 \newline
-L’observation est faites sur des séries temporelles, la luminosité et la position d’un objets varie selon le temps, l’attribut utilisé ici est le \textbf{mjd}, qui est l’heure en date julienne modifiée.
+L’observation est faite sur des séries temporelles, la luminosité et la position d’un objet varient selon le temps, l’attribut utilisé ici est le \textbf{mjd}, qui est l’heure en date julienne modifiée.
 
 \subsection{Les attributs qui semblent sans intérêt et peuvent être exclus}
-certain attributs peuvent êtres exclus pour la modélisations car ils peuvent nous fausser les résultats, comme les attributs identifiant, ou les attributs qui nous permettent pas de faire une bonne classification, dans notre cas la plupart des attributs sont important, mais on peut mettre en vue certain autres comme :
+certains attributs peuvent êtres exclus pour la modélisation, car ils peuvent nous fausser les résultats, comme les attributs identifiants, ou les attributs qui ne nous permettent pas de faire une bonne classification, dans notre cas la plupart des attributs sont important, mais on peut mettre en vue certaine autre comme :
 \begin{itemize}
-    \item \textbf{id-object }: qui est l’identifiant d’un objet dans une classe et qui sert de clés entre les deux table data et meta-data.
-    \item \textbf{detected }: de type booléen, Seuls les objets avec au moins ൣ détections sont inclus
-dans le jeu de données.
+    \item \textbf{id-object }: qui est l’identifiant d’un objet dans une classe et qui sert de clés entre les deux tables data et meta-data.
+    \item \textbf{detected }: de type booléen, seuls les objets avec au moins détections sont inclus dans le jeu de données.
 \end{itemize}
 \subsection{corrélations entres attributs}
-On étudie dans cette partie les attributs corrélés dans les tables data-set et meta-data, regardons les attributs correles sur les meta-data: 
+On étudie dans cette partie les attributs corrélés dans les tables data-set et meta-data, regardons les attributs corrélés sur les meta-data: 
 \begin{figure}[!h]
     \centering
     \includegraphics[width=17cm,height=5cm]{report/figures/correlation.jpg}
@@ -129,8 +128,8 @@ On étudie dans cette partie les attributs corrélés dans les tables data-set e
 
 Dans la table des meta-data les attributs corrélés sont: 
 \begin{itemize}
-    \item \textbf{hostgal-photoz et distmod} cela s'explique par le faite que les valeurs du distmod sont calculées a partir des valeurs du hostgal-photoz.
-    \item \textbf{hostgal-photoz et hostagal-spectz} ces deux attributs sont corrélés puisque les deux concerne l'étude de la lumière ou le décalage vers le rouge, sauf que l'étude spectroscopique est plus précises.
+    \item \textbf{hostgal-photoz et distmod} cela s'explique par le faite que les valeurs du distmod sont calculées à partir des valeurs du hostgal-photoz.
+    \item \textbf{hostgal-photoz et hostagal-spectz}ces deux attributs sont corrélés puisque les deux concernent l'étude de la lumière ou le décalage vers le rouge, sauf que l'étude spectroscopique est plus précise.
 \end{itemize}
 Voici une autre figure qui montre la relation entre les deux attributs hostgal-photoz et hostgal-specz:
 
@@ -154,7 +153,7 @@ Il n'y a pas d'attributs corrélés dans le training-set.
 
 \newpage
 \subsection{valeurs manquantes}
-Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs manquantes qui sont présentes dan notre data valeurs "NAN", voyons d'abord les attributs qui contiennent les valeurs manquantes :
+Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs manquantes qui sont présentes dans notre data valeurs "NAN", voyons d'abord les attributs qui contiennent les valeurs manquantes :
 \newline
 \textbf{1. sur les données d'entraînements}
 \newline
@@ -168,30 +167,31 @@ Avant toute modélisation en Data Mining il est essentiel de traiter les valeurs
     \caption{pourcentage de valeurs manquantes pour Distmod}
     \label{fig:my_label}
 \end{figure}
-On voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. dans le chapitre suivant on verra comment prédire ces données. 
+On voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. Dans le chapitre suivant, on verra comment prédire ces données. 
 \newline
 
 \begin{itemize}
-    \item Il y'a également des valeurs manquantes sur l'attribut flux et flux-err sur certaine série temporelle qui n'ont pas été données dans les data. ces données seront prédites dans les chapitres suivants.
+    \itemOn voit qu'il y'a trop de valeurs manquantes pour l'attribut Distmod. Dans le chapitre suivant, on verra comment prédire ces données.
 \end{itemize}
 \newline
 
-\textbf{2. sur les données de test}: Il y'a également des valeurs manquantes dans les données de test .
+\textbf{2. sur les données de test}: Il y'a également des valeurs manquantes dans les données de test.
 \newline
 \begin{itemize}
-    \item \textbf{hostgal-spectz}: il y'a beaucoup de valeurs manquantes sur cet attribut dans les données de test, même si les données de la spectroscope sont plus précise que la photométrie mais s'avère difficile et coûteux de les avoir, donc on n'utilisera pas cet attribut pour le prédiction du Distmod ni pour l'entraînement.  
+    \item \textbf{hostgal-spectz}: Il y'a beaucoup de valeurs manquantes sur cet attribut dans les données de test, même si les données du spectroscope sont plus précises que la photométrie, mais s'avère difficile et coûteux de les avoir, donc on n'utilisera pas cet attribut pour la prédiction du Distmod ni pour l'entraînement.  
 \end{itemize}
 
 
 
 
 \section{Préparation des données}\label{sec:data_preparation}
-Dans la section de préparation des données, on parlera des étapes qu’on avait réalisé pour obtenir nos données de la modélisation.
+Dans la section de préparation des données, on parlera des étapes qu’on avait réalisées pour obtenir nos données de la modélisation.
 \subsection{Sélection des données}
-\textbf{Choix des colonnes} : Dans les Meta data, on a les deux colonnes \textbf{hostgal-specz} et\textbf{ hostgal-photoz} présentant la même donnée mes en utilisant deux manière mesure différentes. Les données de la colonne \textbf{hostgal-specz} ne sont pas disponibles pour les données de test donc il faut l’éliminer. On aussi la colonne \textbf{MWEBV} qui n’est pas significative pour notre modèle. Pour les données, on a considéré comme hypothèse que toutes les colonnes seront utiles pour notre modélisation.
+\textbf{Choix des colonnes} : Dans les meta-data, on a les deux colonnes \textbf{hostgal-specz} et\textbf{ hostgal-photoz} présentant la même donnée mais en utilisant deux manières de mesure différente. Les données de la colonne. Les données de la colonne \textbf{hostgal-specz} ne sont pas disponibles pour les données de test donc il faut l’éliminer. On aussi la colonne \textbf{MWEBV} qui n’est pas significative pour notre modèle. Pour les données, on a considéré comme hypothèse que toutes les colonnes seront utiles pour notre modélisation.
 \subsection{Génération des données manquantes}
- Dans notre data set on un nombre important des données manquantes. On a supposé que le fait d’avoir des données manquantes impactera négativement notre tache de prédiction. Donc on va prédire ces valeurs avant de passer à la phase de construction de nouveau features pour notre modélisation. Pour faire cela on a utilisé les processus gaussiens. Dans cette méthode au lieu de créer une seule fonction  (dans le cas de régression), elle produit une distribution de toutes les fonctions possibles en fonction des points d'apprentissage. Pour ce faire, elle s’appuie sur la définition d’un processus gaussien, tel que « toute collection de variables aléatoires dans laquelle un sous-ensemble arbitraire de variables à une distribution gaussienne conjointe ». Cela signifie toutefois que la technique suppose que toutes les caractéristiques, y compris toutes les dimensions de x et y, ont une distribution gaussienne. Bien que cela semble limitant, cette hypothèse permet au système de s'exercer à l'aide de la matrice de covariance de la distribution jointe.
-La figure \ref{fig:blackbox_shema} est une présentation du processus qu'on a développé pour la génération des données manquantes  des colonnes \textbf{flux} et \textbf{flux-error}.
+Dans notre data set on a un nombre important des données manquantes. On a supposé que le fait d’avoir des données manquantes impactera négativement notre tache de prédiction. Donc on va prédire ces valeurs avant de passer à la phase de construction de nouveau features pour notre modélisation. Pour faire cela, on a utilisé les processus gaussiens. Dans cette méthode au lieu de créer une seule fonction  (dans le cas de régression), elle produit une distribution de toutes les fonctions possibles en fonction des points d'apprentissage. Pour ce faire, elle s’appuie sur la définition d’un processus gaussien, tel que « toute collection de variables aléatoires dans laquelle un sous-ensemble arbitraire de variables à une distribution gaussienne conjointe ». Cela signifie toutefois que la technique suppose que toutes les caractéristiques, y compris toutes les dimensions de x et y, ont une distribution gaussienne. Bien que cela semble limitant, cette hypothèse permet au système de s'exercer à l'aide de la matrice de covariance de la distribution jointe.
+
+La figure \ref{fig:blackbox_shema} est une présentation du processus qu'on a développé pour la génération des données manquantes des colonnes \textbf{flux} et \textbf{flux-error}.
 \begin{figure}[!h]
     \centering
     \includegraphics[width=12cm,height=7cm]{report/figures/blackbox.png}
@@ -206,7 +206,7 @@ Les étapes précédentes nous ont permis de construire, à partir des données 
     \item \textbf{Les modèles basés sur les caractéristiques :} Il s'agit ici de modèles qui se basent sur les méta données et sur les caractéristiques telles que la moyenne, les quartiles, la valeur maximale, la valeur minimale et bien d'autres pour faire les prédictions. Ces modèles supposent que les séries d'une même classes ont des caractéristiques similaires tandis que les séries de classes différentes ont des caractéristiques qui ne sont pas similaires.
     \item \textbf{Les modèles basés sur les similarités à des sous séries:} Ces modèles se basent sur l'hypothèse qu'il y a dans les séries temporelles des sous séquences qui sont représentatives pour la classes; ces sous-séquences sont appelées \textbf{shapelets} \citep{ye2009time}.
 \end{itemize}
-La figure \ref{fig:modeling_shema} est une représentation schématique du processus de modélisation que nous avons implémenté. Ce schéma va de l'acquisition des données jusqu'au modèle de prédiction. L'étape \textit{preprocessing} correspond à l'étape de préparation des données (Section \ref{sec:data_preparation}) dont le but était le traitement des valeurs manquantes et la normalisation des données. Les éléments suivant seront expliqués dans les lignes qui suivent selon qu'on soit orienté caractéristiques (Section \ref{sec:feature_based_model}) ou shapelet (Section \ref{sec:shapelet_based_model})
+La figure \ref{fig:modeling_shema} est une représentation schématique du processus de modélisation que nous avons implémenté. Ce schéma va de l'acquisition des données jusqu'au modèle de prédiction. L'étape \textit{preprocessing} correspond à l'étape de préparation des données (Section \ref{sec:data_preparation}) dont le but était le traitement des valeurs manquantes et la normalisation des données. Les éléments suivants seront expliqués dans les lignes qui suivent selon qu'on soit orienté caractéristiques (Section \ref{sec:feature_based_model}) ou shapelet (Section \ref{sec:shapelet_based_model})
 
 \begin{figure}[!h]
     \centering
@@ -218,7 +218,7 @@ La figure \ref{fig:modeling_shema} est une représentation schématique du proce
 \subsection{Modèles basés sur les caractéristiques}\label{sec:feature_based_model}
 
 \subsection{Modèles basés sur les shapelets}\label{sec:shapelet_based_model}
-Un Shapelet est défini comme une sous-séquence d'une série temporelle qui est représentative pour la classe \citep{ye2009time}. Ainsi une série temporelle appartient à une classe donnée si elle contient le \textit{shapelet} représentatif de ladite classe. Dans la pratique les séries d'une même classe n'ont pas exactement les mêmes sous-séquences représentatives mais elles ont des sous-séquences qui sont similaires aux sous-séquences représentatives de la classe. 
+Un Shapelet est défini comme une sous-séquence d'une série temporelle qui est représentative pour la classe \citep{ye2009time}. Ainsi une série temporelle appartient à une classe donnée si elle contient le \textit{shapelet} représentatif de ladite classe. Dans la pratique, les séries d'une même classe n'ont pas exactement les mêmes sous-séquences représentatives, mais elles ont des sous-séquences qui sont similaires aux sous-séquences représentatives de la classe. 
 La classification des séries temporelles peut être réalisée par un arbre de décision (Figure \ref{fig:shapelet_based_dt}) dans lequel l'attribut de division (split) à chaque noeud est un \textit{shapelet} et les données sont séparées en fonction de leur similarité à ce \textit{shapelet}.
 
 \begin{figure}[!h]
@@ -243,7 +243,7 @@ Commençons par donner quelques définitions formelles:
 
 \textbf{Une sous-série \textit{S} de \textit{T}} est un sous ensemble ordonné de \textit{l} ($ l \leq m $) valeurs de \textit{T}. $ S = T_p, T_{p+1},..., T_{p+l-1}, pour 1 \leq p \leq m-l+1 $. Le nombre de sous-séries peut très rapidement exploser lorsque $l$ est négligeable devant $m$. En effet une série de taille $m$ a exactement $ m-l+1 $ sous-séries de taille $l$. Les données de test de PLASTICC forment un ensemble de $ 3492890 $ de taille $1094$ chacune après l'imputation des valeurs manquantes. Le nombre de sous-séries possible est donc de $ 3492890 \times (1094 - l + 1)$, un algorithme naïf serait donc inutilisable en pratique.
 
-\textbf{Un Shapelet} est une sous-séries qui permet de séparer l'ensemble des séries temporelles en deux classes suffisamment hétérogènes pour que l'une des classes contienne des séries qui ont une sous-séquence similaire au shapelet tandis que l'autre classe contient des séries qui n'ont pas de sous-séquence similaire au shapelet\cite{fotso2018frobenius}. 
+\textbf{Un Shapelet} est une sous-série qui permet de séparer l'ensemble des séries temporelles en deux classes suffisamment hétérogènes pour que l'une des classes contienne des séries qui ont une sous-séquence similaire au shapelet tandis que l'autre classe contient des séries qui n'ont pas de sous-séquence similaire au shapelet\cite{fotso2018frobenius}. 
 
 \subsubsection{Mesure de la similarité}
 Il existe dans la littérature plusieurs métriques pour mesurer la similarité entre deux séries temporelles de même taille. Nous avons par exemple la distance euclidienne, DTW (Dynamic Time Warping), DUST, PROUD, MUNICH et FOTS \cite{fotso2018frobenius}. Les séries temporelles de PLASTICC étant incertaines, FOTS serait la métrique la plus adaptée car elle est plus robuste à l'incertitude. Cependant, étant contraint par le temps, nous avons utilisé DTW car déjà implémenté par la bibliothèque que nous utilisons et le calcul des valeurs propres dont a besoin FOTS sur un dataset aussi grand que celui de PLASTICC prendrait beaucoup trop de temps.
@@ -276,10 +276,10 @@ Une fois les shapelets extraits et la similarité entre un shapelet et une séri
 \subsection{Modèle basé sur les caractéristiques}
 
 \subsection{Modèle basé sur les shapelets}
-Nous n'avons pas pu faire une évaluation effective de notre approche. En effet pour vraiment savoir si le modèle généralise bien, il aurait fallu faire une soumission sur Kaggle dans le cadre du challenge car nous n'avons pas les labels des données de test. Les données de test de PLASTICC sont fournit dans un unique fichier qui fait $ 18$Go, et il nous aurait fallu des jours (plus de de 8 jours) pour faire toutes les prédictions en utilisant les ressources à notre disposition. Nous pouvons néanmoins citer quelques hypothèses d'amélioration:
+Nous n'avons pas pu faire une évaluation effective de notre approche. En effet pour vraiment savoir si le modèle généralise bien, il aurait fallu faire une soumission sur Kaggle dans le cadre du challenge, car nous n'avons pas les labels des données de test. Les données de test de PLASTICC sont fournies dans un unique fichier qui fait $ 18$Go, et il nous aurait fallu des jours (plus de de 8 jours) pour faire toutes les prédictions en utilisant les ressources à notre disposition. Nous pouvons néanmoins citer quelques hypothèses d'amélioration:
 \begin{itemize}
-    \item Le modèle d'apprentissage des shapelets fournit par tslearn est un réseau de neurones dont nous n'avons pas un contrôle total. En effet nous ne pouvons pas modifier le nombre de couches, ni le nombre de neurones par couche; nous ne pouvons pas modifier son architecture. De plus ce modèle utilise la distance euclidienne comme mesurer de similarité, ce qui n'est pas le plus adéquat pour des données incertaines.
+    \item Le modèle d'apprentissage des shapelets fourni par tslearn est un réseau de neurones dont nous n'avons pas un contrôle total. En effet, nous ne pouvons pas modifier le nombre de couches ni le nombre de neurones par couche; nous ne pouvons pas modifier son architecture. De plus, ce modèle utilise la distance euclidienne comme mesure de similarité, ce qui n'est pas le plus adéquat pour des données incertaines.
     \item utiliser la mesure de similarité FOTS en lieu et place de DTW conduirait à de meilleurs résultats
     \item l'utilisation des méta-données dans les processus d'apprentissage et de prédiction pourrait également améliorer le modèle.
-    \item prendre en compte la détection de nouveaux objets (classe 99). En effet le modèle ne peut que prédire les objets similaires à ceux qui sont dans les données d'apprentissage, pourtant ces données d'apprentissage ne sont pas représentatives pour les données de test.
+    \item prendre en compte la détection de nouveaux objets (classe 99). En effet, le modèle ne peut que prédire les objets similaires à ceux qui sont dans les données d'apprentissage, pourtant ces données d'apprentissage ne sont pas représentatives pour les données de test.
 \end{itemize}
