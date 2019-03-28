@@ -1,11 +1,5 @@
 \chapter{Méthode}
 
-Méthode CRISP\cite{crisp}
-
-Évaluation de nos modèles \cite{plasticc_team_2019_2539456}
-
-
-
 \section{Compréhension des données}
 La compréhension des données est l’une des étapes les plus importantes pour la réalisation d’un projet data mining elle vise à déterminer précisément les données à analyser, à identifier la qualité des données disponibles et à faire le lien entre les données
 et leur signification d’un point de vue métier. La Data Science étant basée sur les données seules, les problèmes métiers relatifs à des données existantes, qu’elles soient internes ou externes, peuvent ainsi être résolus par la Data Science.
@@ -216,6 +210,7 @@ La figure \ref{fig:modeling_shema} est une représentation schématique du proce
 \end{figure}
 
 \subsection{Modèles basés sur les caractéristiques}\label{sec:feature_based_model}
+Il est question ici, pour chaque série temporelle, d'extraire les caractéristiques telles que: la moyenne, le nombre de piques, les quartiles, le maximum, le minimum. De former un vecteur qui contient ces caractéristiques ainsi que les métadonnées. Un modèle de classification, en l'occurrence XGBoost\cite{chen2016xgboost} a ensuite été entraîné sur ces vecteurs pour faire de la classification.
 
 \subsection{Modèles basés sur les shapelets}\label{sec:shapelet_based_model}
 Un Shapelet est défini comme une sous-séquence d'une série temporelle qui est représentative pour la classe \citep{ye2009time}. Ainsi une série temporelle appartient à une classe donnée si elle contient le \textit{shapelet} représentatif de ladite classe. Dans la pratique, les séries d'une même classe n'ont pas exactement les mêmes sous-séquences représentatives, mais elles ont des sous-séquences qui sont similaires aux sous-séquences représentatives de la classe. 
@@ -273,13 +268,12 @@ L'apprentissage des shapelets s'est fait sur $ 20 $ époques avec comme fonction
 Une fois les shapelets extraits et la similarité entre un shapelet et une séries pouvant être calculée il est possible d'utiliser n'importe quel modèle de prédiction pour faire la classification. Nous avons utilisé la méthode d'apprentissage ensembliste XGBoost\cite{chen2016xgboost}. Pour chaque série temporelle, on construit un vecteur dont la taille est le nombre de shapelets et la composante $ i $ est la similarité entre la série et le shapelet $ i $. Ce sont ces vecteurs de distances aux différents shapelets qui sont passés au modèle de prédiction. Nous avons entraîné le modèle sur les données d'apprentissage de PLASTICC en utilisant une validation croisée à $ 4 $-folds.
 
 \section{Évaluation}
-\subsection{Modèle basé sur les caractéristiques}
 
-\subsection{Modèle basé sur les shapelets}
 Nous n'avons pas pu faire une évaluation effective de notre approche. En effet pour vraiment savoir si le modèle généralise bien, il aurait fallu faire une soumission sur Kaggle dans le cadre du challenge, car nous n'avons pas les labels des données de test. Les données de test de PLASTICC sont fournies dans un unique fichier qui fait $ 18$Go, et il nous aurait fallu des jours (plus de de 8 jours) pour faire toutes les prédictions en utilisant les ressources à notre disposition. Nous pouvons néanmoins citer quelques hypothèses d'amélioration:
 \begin{itemize}
     \item Le modèle d'apprentissage des shapelets fourni par tslearn est un réseau de neurones dont nous n'avons pas un contrôle total. En effet, nous ne pouvons pas modifier le nombre de couches ni le nombre de neurones par couche; nous ne pouvons pas modifier son architecture. De plus, ce modèle utilise la distance euclidienne comme mesure de similarité, ce qui n'est pas le plus adéquat pour des données incertaines.
     \item utiliser la mesure de similarité FOTS en lieu et place de DTW conduirait à de meilleurs résultats
     \item l'utilisation des méta-données dans les processus d'apprentissage et de prédiction pourrait également améliorer le modèle.
+    \item l'imputation des valeurs manquantes par les Processus Gaussiens pourrait être plus pertinents
     \item prendre en compte la détection de nouveaux objets (classe 99). En effet, le modèle ne peut que prédire les objets similaires à ceux qui sont dans les données d'apprentissage, pourtant ces données d'apprentissage ne sont pas représentatives pour les données de test.
 \end{itemize}
