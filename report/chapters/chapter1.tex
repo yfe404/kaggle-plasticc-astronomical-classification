@@ -2,11 +2,26 @@
 
 \section{Présentation du challenge}
 
+Kaggle est une plate-forme en ligne de data science détenue par le groupe Alphabet. Elle propose, entre autre, à des entreprises privée et des institutions publiques de mettre leurs données à disposition des utilisateurs de Kaggle sous la forme de compétitions. L'objectif étant typiquement d'utiliser les données fournies pour entraîner un modèle prédictif, modèle qui sera ensuite testé sur un autre de jeu de données pour classer les participants selon la performance de leur algorithme. Ainsi l'équipe PLAsTICC (Photometric LSST Astronomical Time-Series Classification Challenge), administrée par l'Université de Toronto et financé par la National Science Foundation a récemment proposé un challenge sur le site Kaggle. 
+
+Les données mises à disposition ici sont des informations sur des objets astronomiques réels. Une partie de ces données (metadonnées) sont des données réelles issues de la littérature (par exemple la position de certaines étoiles et astéroïdes), et d'autres sont simulées par des modèles mathématiques non communiqués par les porteurs du challenge. Ces modèles ont été utilisé pour simuler la signature lumineuse des objets. 
+
+La compétition consiste en la réalisation d'un modèle permettant de classer des objets astronomiques en fonction de leur signature lumineuse au cours du temps. 
+
+Le but du projet est de proposer des modèles qui pourront servir à étudier les observations d'un télescope (le LSST) qui sera mis en activité en 2022. Cette information est importante pour notre projet, en effet outre les performances du modèle, l'aspect interprétation, c'est à dire la connaissance des facteurs qui influencent la qualité des résultats devra être prise en compte. 
+
+
+
 \section{Détail de l’existant}
+
+L'équipe PLAsTICC propose un kit de démarrage qui consiste en un guide métier des données que nous décrivons en détails dans la suite du rapport ainsi que des exemples de code Python d'exploration des données. Ce kit doit permettre à des développeurs non spécialistes en astronomie de comprendre les données a manipuler. Le code quant à lui permet de comprendre comment manipuler les fichiers et faire facilement le lien entre le guide métier et les données mises à disposition.
+
 
 \section{La mission confiée}
 
-\section{Résumé de l’état de l’art}
+Comme dans la plupart des compétition Kaggle, l'objectif est de construire un modèle à partir de données. Le modèle est ensuite appliqué à un ensemble d'observations dont la classe nous est cachée. Le but est de minimiser la proportion d'erreurs entre les prédiction faite par l'algorithme et les classes réelles des objets. 
 
-\section{Cahier des charges}
+Kaggle classe ensuite les algorithmes des particiants selon cette proportion. A noter que l'aspect interprétabilité (discuté précédemment) n'entre pas een compte malgré son importance pour les scientifiques qui utiliserons potientiellement les algorithmes développés au cours du challenge pour étudier les observations faites par le LSST.
+
+Dans la suite de ce rapport nous détaillons les étapes suivies qui ont permit la réalisation de notre modèle. 
 
