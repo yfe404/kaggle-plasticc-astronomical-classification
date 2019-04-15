@@ -160,7 +160,7 @@ def predict_object(test_df):
     return preds
 
 
-# In[25]:
+# In[16]:
 
 
 def producer_task(queue):
@@ -171,7 +171,7 @@ def producer_task(queue):
         queue.put(object_df)
 
 
-# In[26]:
+# In[17]:
 
 
 def consumer_task(queue, lock, submission): 
@@ -186,7 +186,7 @@ def consumer_task(queue, lock, submission):
             submission.append(preds)
 
 
-# In[36]:
+# In[18]:
 
 
 def predict_test_set(predictions, nb_lines, max_nb_of_processes = 2):
@@ -221,7 +221,7 @@ def predict_test_set(predictions, nb_lines, max_nb_of_processes = 2):
     print("Producer finished")
 
 
-# In[37]:
+# In[19]:
 
 
 get_ipython().run_cell_magic('time', '', 'manager = Manager()\n\npredictions = manager.list()\n\npredict_test_set(predictions, 20, max_nb_of_processes=max_nb_of_processes)')
