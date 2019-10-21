@@ -188,7 +188,7 @@ traitlets==4.3.2
 tslearn==0.1.28.2
 urllib3==1.24.1
 wcwidth==0.1.7
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 absl-py==0.7.0
 astor==0.7.1
 backcall==0.1.0
@@ -250,5 +250,5 @@ traitlets==4.3.2
 tslearn==0.1.28.2
 urllib3==1.24.1
 wcwidth==0.1.7
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 xgboost==0.82
