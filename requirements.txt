@@ -2,7 +2,7 @@ backcall==0.1.0
 cesium==0.9.9
 cloudpickle==0.8.0
 cycler==0.10.0
-dask==1.1.1
+dask==2021.10.0
 decorator==4.3.2
 gatspy==0.3
 ipykernel==5.1.0
@@ -41,7 +41,7 @@ chardet==3.0.4
 cloudpickle==0.8.0
 cycler==0.10.0
 Cython==0.29.6
-dask==1.1.1
+dask==2021.10.0
 decorator==4.3.2
 gatspy==0.3
 idna==2.8
@@ -85,7 +85,7 @@ chardet==3.0.4
 cloudpickle==0.8.0
 cycler==0.10.0
 Cython==0.29.6
-dask==1.1.1
+dask==2021.10.0
 decorator==4.3.2
 gatspy==0.3
 h5py==2.9.0
@@ -136,7 +136,7 @@ chardet==3.0.4
 cloudpickle==0.8.0
 cycler==0.10.0
 Cython==0.29.6
-dask==1.1.1
+dask==2021.10.0
 decorator==4.3.2
 gast==0.2.2
 gatspy==0.3
@@ -198,7 +198,7 @@ chardet==3.0.4
 cloudpickle==0.8.0
 cycler==0.10.0
 Cython==0.29.6
-dask==1.1.1
+dask==2021.10.0
 decorator==4.3.2
 gast==0.2.2
 gatspy==0.3
