@@ -6,7 +6,7 @@ dask==1.1.1
 decorator==4.3.2
 gatspy==0.3
 ipykernel==5.1.0
-ipython==7.2.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 jedi==0.13.2
 jupyter-client==5.2.4
@@ -46,7 +46,7 @@ decorator==4.3.2
 gatspy==0.3
 idna==2.8
 ipykernel==5.1.0
-ipython==7.2.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 jedi==0.13.2
 jupyter-client==5.2.4
@@ -91,7 +91,7 @@ gatspy==0.3
 h5py==2.9.0
 idna==2.8
 ipykernel==5.1.0
-ipython==7.2.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 jedi==0.13.2
 jupyter-client==5.2.4
@@ -144,7 +144,7 @@ grpcio==1.19.0
 h5py==2.9.0
 idna==2.8
 ipykernel==5.1.0
-ipython==7.2.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 jedi==0.13.2
 jupyter-client==5.2.4
@@ -206,7 +206,7 @@ grpcio==1.19.0
 h5py==2.9.0
 idna==2.8
 ipykernel==5.1.0
-ipython==7.2.0
+ipython==7.16.3
 ipython-genutils==0.2.0
 jedi==0.13.2
 jupyter-client==5.2.4
