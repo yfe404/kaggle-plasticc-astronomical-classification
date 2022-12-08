@@ -35,7 +35,7 @@ tornado==5.1.1
 traitlets==4.3.2
 wcwidth==0.1.7
 backcall==0.1.0
-certifi==2018.11.29
+certifi==2022.12.7
 cesium==0.9.9
 chardet==3.0.4
 cloudpickle==0.8.0
@@ -79,7 +79,7 @@ tslearn==0.1.28.2
 urllib3==1.24.1
 wcwidth==0.1.7
 backcall==0.1.0
-certifi==2018.11.29
+certifi==2022.12.7
 cesium==0.9.9
 chardet==3.0.4
 cloudpickle==0.8.0
@@ -130,7 +130,7 @@ wcwidth==0.1.7
 absl-py==0.7.0
 astor==0.7.1
 backcall==0.1.0
-certifi==2018.11.29
+certifi==2022.12.7
 cesium==0.9.9
 chardet==3.0.4
 cloudpickle==0.8.0
@@ -192,7 +192,7 @@ Werkzeug==0.14.1
 absl-py==0.7.0
 astor==0.7.1
 backcall==0.1.0
-certifi==2018.11.29
+certifi==2022.12.7
 cesium==0.9.9
 chardet==3.0.4
 cloudpickle==0.8.0
